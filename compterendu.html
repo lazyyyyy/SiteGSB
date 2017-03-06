@@ -88,8 +88,10 @@
 											Praticien : 	
 										</td>
 										<td>
-											<select name="menu_destination">
-												<option >Praticien</option>
+											<select name="menu_destination" >
+												<optgroup label = "Praticien" id="menu_destination">
+                                                    <option value = ""></option>
+                                                </optgroup>
 											</select>
 											<br /> <br />	
 										</td>	
@@ -99,7 +101,7 @@
 											Date : 	
 										</td>
 										<td>
-											<input type="date" name="anniversaire">
+											<input type="date" name="anniversaire" />
 											<br /> <br />	
 										</td>	
 									</tr>
@@ -323,6 +325,7 @@
 				</div>
 
 				<!-- Scripts -->
+                <script src="js/ajax.js"></script>
                 <script src="js/compterendu.js"></script>
 				<script src="assets/js/jquery.min.js"></script>
 				<script src="assets/js/jquery.dropotron.min.js"></script>
