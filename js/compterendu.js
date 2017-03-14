@@ -1,4 +1,4 @@
-var form = document.querySelector("form");
+/*var form = document.querySelector("form");
 
 form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -6,15 +6,16 @@ form.addEventListener("submit", function(e){
     var data = new FormData(form);
     
     
-    ajaxPost("../api/addCompteRendu.php", data, function(){}, true);
-});
+    ajaxPost("../api/addCompteRendu.php", data, function(){}, false);
+});*/
 
 var selectPraticien = document.getElementById("menu_destination");
 
 var data = new FormData();
-data.append("nom_praticien", "");
+data.append("nom", "");
 
 ajaxPost("../api/getPraticienByName.php", data, function(reponse){
+    console.log(reponse);
     var praticiens = JSON.parse(reponse);
     
     praticiens.forEach(function(praticien){
