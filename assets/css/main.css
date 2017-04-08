@@ -3039,4 +3039,13 @@
 			margin-bottom: 2em;
 		}
 
+		ul#onglets li { 
+		display : inline;
+		padding : 0 0.5em; 
+		}
+
+		ul#onglets {
+		list-style-type : none; 
+		}
+
 	}
