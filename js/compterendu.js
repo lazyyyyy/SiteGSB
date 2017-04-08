@@ -9,12 +9,12 @@ form.addEventListener("submit", function(e){
     ajaxPost("../api/addCompteRendu.php", data, function(){}, false);
 });*/
 
-var selectPraticien = document.getElementById("menu_destination");
+var selectPraticien = document.getElementById("selectPraticien");
 
 var data = new FormData();
-data.append("nom", "");
+data.append("nom", "bar");
 
-ajaxPost("../api/getPraticienByName.php", data, function(reponse){
+ajaxPost("http://localhost:8080/api/getPraticienByName.php", data, function(reponse){
     console.log(reponse);
     var praticiens = JSON.parse(reponse);
     

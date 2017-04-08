@@ -63,10 +63,8 @@
 							<label>Type de Frais </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<select name="nom" class="form-control" style="display:inline;">
-		 						<option value="1">Restaurant</option>
-		 						<option value="2">Hôtel</option>
-		 						<option value="3">Essence+Péage</option>
+							<select name="nom" class="form-control" style="display:inline;" id="typeDeFrais">
+		 						
 		 					</select>
 						</div>
 					</div>
@@ -75,7 +73,8 @@
 							<label>Date </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<input type="date" class="form-control" name="anniversaire" />
+							<input type="date" class="form-control" name="anniversaire" id="date" />
+                            <div id = "messageDate"></div>
 						</div>
 					</div>
 					<div class="row">
@@ -257,6 +256,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js"></script>
+        <script src="js/gestiondesfrais.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
