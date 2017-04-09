@@ -21,14 +21,34 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-
-				<form action="" method="post">
+                <?php
+                    if(isset($_GET["erreur"]))
+                    {
+                        if($_GET["erreur"] == 1) //s'il y a eut une erreur lors du transfert du frais
+                        {
+                            ?>
+                            <div id="echec">
+                                Erreur : Opération échouée
+                            </div>
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <div id="reussite">
+                                Opération effectuée avec succès
+                            </div>
+                            <?php
+                        }
+                    }
+                ?>
+				<form action="js/ajoutGestionFrais.php" method="post" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Type de Frais </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<select name="nom" class="form-control" style="display:inline;" id="typeDeFrais">
+							<select name="typeFrais" class="form-control" style="display:inline;" id="typeDeFrais">
 		 						
 		 					</select>
 						</div>
@@ -38,7 +58,7 @@
 							<label>Date </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<input type="date" class="form-control" name="anniversaire" id="date" />
+							<input type="date" class="form-control" name="date" id="date" required />
                             <div id = "messageDate"></div>
 						</div>
 					</div>
@@ -47,18 +67,10 @@
 							<label>Montant </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<input type="text" class="form-control" name="howmuch" />
+							<input type="text" class="form-control" name="montant" required />
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Pièce jointe </label>
-						</div>
-						<div class="col-lg-10 col-xs-10">
-							<input type="file" class="form-control" name="fichier" />
-						</div>
-					</div>
-					<div class="row">
+                    <div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Commentaire </label>
 						</div>
@@ -66,6 +78,18 @@
 							<textarea class="form-control"name="commentaire" rows="3"></textarea>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Pièce jointe </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+                                <input type="file" class="form-control" name="fichier"/>
+						</div>
+					</div>
+                    <div id="json"><?php echo $_SESSION["user_id_json"] ?></div>
+                    
+                    <input type="hidden" name="id_utilisateur" id="id_utilisateur" />
+                    
 					<div class="row">
 						<div class="col-xs-12 col-lg-12 text-right">
 							<input type="submit" name="lien1" value="Enregistrer" class="btn btn-success" />
