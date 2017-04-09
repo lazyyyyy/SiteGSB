@@ -1,7 +1,11 @@
+<?php
+    include("header.php");
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Liste des médicaments </title>
+	<title>Compte rendu de visite </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -13,85 +17,54 @@
 <body class="right-sidebar">
 	<div id="page-wrapper">
 
-		<!-- Header -->
-		<div id="header">
-
-			<!-- Inner -->
-			<div class="inner">
-				<header>
-					<h1>Liste des médicaments</h1>
-				</header>
-			</div>
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-
-					<li><a href="agenda.html">Agenda</a></li>
-					<li><a href="gestiondesfrais.html">Gestion des frais</a></li>
-					<li><a href="compterendu.html">Compte Rendu</a></li>
-					<li><a href="parcauto.html">Parc Auto</a></li>
-					<li>
-						<a href="#">Praticiens</a>
-						<ul>
-							<li><a href="praticiens.html">Recherche de praticien</a></li>
-							<li><a href="praticiensListe.html">Liste des praticiens</a></li>
-						</ul>
-
-					</li>
-					<li class="active">
-						<a href="#">Médicaments</a>
-						<ul>
-							<li><a href="medicaments.html">Rechercher un médicament</a></li>
-							<li><a href="medicamentsListe.html">Liste des médicaments</a></li>
-						</ul>	
-					</li>
-				</ul>	
-			</nav>
-
-		</div>
-
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
 
-				<table border="1" class="default">
-					<thead>
-						<tr>
-							<th style="font-weight:bold;">Nom commercial</th>
-							<th style="font-weight:bold;">Famille</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.html">ADIMOL</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.html">AMOPIL</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.html">AMOXAR</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.html">AMOXI Gé</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.html">APATOUX Vitamine C</a></td>
-							<td class="text-left">Antibiotique local (ORL)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.html">BACTIGEL</a></td>
-							<td class="text-left">Antibiotique antiacnéique local</td>
-						</tr>
-					</tbody>
-				</table>
-
+				<form action="" method="post">
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Praticien</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select name="praticien" class="form-control" style="display:inline;" id="selectPraticien">
+                                <optgroup>
+                                    
+                                </optgroup>
+		 					</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Date</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="date" class="form-control" name="anniversaire" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Motif</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control"name="motif" rows="2"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Bilan</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control"name="bilan" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-lg-12 text-right">
+							<button type="submit" name="lien1" class="btn btn-primary"> <i class="fa fa-plus"></i> Ajouter</button>
+						</div>
+					</div>
+				</form>
 			
 			</div>
 
@@ -241,6 +214,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js"></script>
+        <script src="js/compterendu.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -250,5 +225,6 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>

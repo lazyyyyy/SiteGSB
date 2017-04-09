@@ -1,7 +1,11 @@
+<?php
+    include("header.php");
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Agenda </title>
+	<title>Recherche d'un médicament </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -13,51 +17,32 @@
 <body class="right-sidebar">
 	<div id="page-wrapper">
 
-		<!-- Header -->
-		<div id="header">
-
-			<!-- Inner -->
-			<div class="inner">
-				<header>
-					<h1>Agenda</h1>
-				</header>
-			</div>
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-
-					<li class="active"><a href="agenda.html">Agenda</a></li>
-					<li><a href="gestiondesfrais.html">Gestion des frais</a></li>
-					<li><a href="compterendu.html">Compte Rendu</a></li>
-					<li><a href="parcauto.html">Parc Auto</a></li>
-					<li>
-						<a href="#">Praticiens</a>
-						<ul>
-							<li><a href="praticiens.html">Recherche de praticien</a></li>
-							<li><a href="praticiensListe.html">Liste des praticiens</a></li>
-						</ul>
-
-					</li>
-					<li>
-						<a href="#">Médicaments</a>
-						<ul>
-							<li><a href="medicaments.html">Rechercher un médicament</a></li>
-							<li><a href="medicamentsListe.html">Liste des médicaments</a></li>
-						</ul>	
-					</li>
-				</ul>	
-			</nav>
-
-		</div>
 
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
 
-				<iframe src="https://calendar.google.com/calendar/embed?src=sitegsbagenda%40gmail.com&ctz=Europe/Paris" style="border: 0" width="100%" height="800px" frameborder="0" scrolling="no"></iframe>
+				<form>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Nom commercial</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select name="praticien" class="form-control" style="display:inline;" id="nomCommercial">
+		 						
+		 					</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2">
+							&nbsp;
+						</div>
+						<div class="col-xs-10 col-lg-10 text-left">
+							<button type="submit" name="lien1" class="btn btn-primary"> <i class="fa fa-search"></i> Rechercher</button>
+						</div>
+					</div>
+				</form>
 			
 			</div>
 
@@ -207,6 +192,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js"></script>
+        <script src="js/medicaments.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

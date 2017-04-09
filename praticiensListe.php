@@ -1,3 +1,7 @@
+<?php
+    include("header.php");
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Helios by HTML5 UP
@@ -15,44 +19,6 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
-
-		<!-- Header -->
-		<div id="header">
-
-			<!-- Inner -->
-			<div class="inner">
-				<header>
-					<h1><a href="index.html" id="logo">PraticiensListe</a></h1>
-				</header>
-			</div>
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					
-					<li><a href="agenda.html">Agenda</a></li>
-					<li><a href="gestiondesfrais.html">Gestion des frais</a></li>
-					<li><a href="compterendu.html">Compte Rendu</a></li>
-					<li>
-						<a href="#">Praticiens</a>
-						<ul>
-							<li><a href="praticiens.html">Praticiens</a></li>
-							<li><a href="praticiensListe.html">PraticiensListe</a></li>
-						</ul>
-						
-					</li>
-					<li>
-						<a href="#">Médicaments</a>
-						<ul>
-							<li><a href="medicaments.html">Médicaments</a></li>
-							<li><a href="medicamentsListe.html">MédicamentsListe</a></li>
-						</ul>	
-					</li>
-				</ul>	
-			</nav>
-
-		</div>
 
 		<!-- Main -->
 		<div class="wrapper style1">

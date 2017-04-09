@@ -1,3 +1,7 @@
+<?php
+    include("header.php");
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -12,45 +16,6 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
-
-		<!-- Header -->
-		<div id="header">
-
-			<!-- Inner -->
-			<div class="inner">
-				<header>
-					<h1>Porsche Panamera</h1>
-				</header>
-			</div>
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-
-					<li><a href="agenda.html">Agenda</a></li>
-					<li><a href="gestiondesfrais.html">Gestion des frais</a></li>
-					<li><a href="compterendu.html">Compte Rendu</a></li>
-					<li class="active"><a href="parcauto.html">Parc Auto</a></li>
-					<li>
-						<a href="#">Praticiens</a>
-						<ul>
-							<li><a href="praticiens.html">Recherche de praticien</a></li>
-							<li><a href="praticiensListe.html">Liste des praticiens</a></li>
-						</ul>
-
-					</li>
-					<li>
-						<a href="#">Médicaments</a>
-						<ul>
-							<li><a href="medicaments.html">Rechercher un médicament</a></li>
-							<li><a href="medicamentsListe.html">Liste des médicaments</a></li>
-						</ul>	
-					</li>
-				</ul>	
-			</nav>
-
-		</div>
 
 		<!-- Main -->
 		<div class="wrapper style1">

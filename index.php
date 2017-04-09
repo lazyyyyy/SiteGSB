@@ -17,21 +17,31 @@
 			<!-- Inner -->
 			<div class="inner">
 				<header>
-					<form action="" method="post">
+                    <?php
+                        if(isset($_GET["erreur"]))
+                        {
+                            ?>
+                            <div>
+                                <label>Nom d'utilisateur ou mot de passe incorrect</label>
+                            </div>
+                            <?php
+                        }
+                    ?>
+					<form action="js/login.php" method="post" id="connexion">
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Utilisateur&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+							<label>Utilisateur</label>
 						</div>
 						<div class="col-lg-20 col-xs-20">
-							<input class="form-control"name="motif" rows="1"/>
+							<input type="text" class="form-control" name="login" rows="1"/>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Mot de passe</label>
 						</div>
-						<div class="col-lg-10 col-xs-10">
-							<input style="password" class="form-control"name="motif" rows="1"/>
+						<div class="col-lg-10 col-xs-10"> 
+							<input type="password" class="form-control"name="mdp" rows="1"/>
 						</div>
 					</div>
 					<div class="row">

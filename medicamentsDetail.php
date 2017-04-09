@@ -1,7 +1,11 @@
+<?php
+    include("header.php");
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Parc automobile </title>
+	<title>ADIMOL </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -13,80 +17,53 @@
 <body class="right-sidebar">
 	<div id="page-wrapper">
 
-		<!-- Header -->
-		<div id="header">
-
-			<!-- Inner -->
-			<div class="inner">
-				<header>
-					<h1>Parc automobile</h1>
-				</header>
-			</div>
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-
-					<li><a href="agenda.html">Agenda</a></li>
-					<li><a href="gestiondesfrais.html">Gestion des frais</a></li>
-					<li><a href="compterendu.html">Compte Rendu</a></li>
-					<li class="active"><a href="parcauto.html">Parc Auto</a></li>
-					<li>
-						<a href="#">Praticiens</a>
-						<ul>
-							<li><a href="praticiens.html">Recherche de praticien</a></li>
-							<li><a href="praticiensListe.html">Liste des praticiens</a></li>
-						</ul>
-
-					</li>
-					<li>
-						<a href="#">Médicaments</a>
-						<ul>
-							<li><a href="medicaments.html">Rechercher un médicament</a></li>
-							<li><a href="medicamentsListe.html">Liste des médicaments</a></li>
-						</ul>	
-					</li>
-				</ul>	
-			</nav>
-
-		</div>
 
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
 
-				<table border="1" class="default">
-					<thead>
-						<tr>
-							<th style="font-weight:bold; width:10%;">N&deg;</th>
-							<th style="font-weight:bold; width:40%;">Modèle</th>
-							<th style="font-weight:bold; width:30%;">Fabricant</th>
-							<th style="font-weight:bold; width:20%;">Prix</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left">1</td>
-							<td class="text-left"><a href="parcautoDetail.html"><div>488 GTB <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Ferrari</td>
-							<td class="text-left">800 000 &euro;</td>
-						</tr>
-						<tr>
-							<td class="text-left">1</td>
-							<td class="text-left"><a href="parcautoDetail.html"><div>Panamera <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Porscche</td>
-							<td class="text-left">430 000 &euro;</td>
-						</tr>
-						<tr>
-							<td class="text-left">1</td>
-							<td class="text-left"><a href="parcautoDetail.html"><div>RS3 <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Audi</td>
-							<td class="text-left">57 900 &euro;</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Nom </label>
+					</div>
+					<div class="col-lg-10 col-xs-10">
+						ADIMOL9
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Famille </label>
+					</div>
+					<div class="col-lg-10 col-xs-10">
+						Antibiotique de la famille des béta-lactamines (pénicilline A)
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Composition </label>
+					</div>
+					<div class="col-lg-10 col-xs-10">
+						Amoxicilline + Acide clavulanique
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Effets </label>
+					</div>
+					<div class="col-lg-10 col-xs-10">
+						Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Contre-indications </label>
+					</div>
+					<div class="col-lg-10 col-xs-10">
+						Ce médicament est contre-indiqué en cas d'allergie aux pénicillines ou aux céphalosporines.
+					</div>
+				</div>
+
 			
 			</div>
 

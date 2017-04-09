@@ -27,3 +27,5 @@ date.addEventListener("blur", function(e){
             messageDate.textContent = "";
         }
 });
+
+console.log(getCookie("user_id"));
