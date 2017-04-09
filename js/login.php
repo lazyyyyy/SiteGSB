@@ -2,7 +2,7 @@
     session_start();
     include("../../api/fonctions.php");
     $user = connexion($_POST["login"], $_POST["mdp"]);
-	if($user != null)
+	if($user == 'null')
 	{
 		header('Location: ../index.php?erreur=1');
 		exit();
