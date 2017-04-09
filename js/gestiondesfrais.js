@@ -49,8 +49,15 @@ console.log(json);
 var user = JSON.parse(json);
 document.getElementById("id_utilisateur").value = user.id;
 
-document.getElementById("echec").style.color = "red";
-document.getElementById("reussite").style.color = "green";
+var reponseElt = document.getElementById("reponse");
+if(reponseElt.textContent === "Erreur : Opération échouée")
+    {
+        reponseElt.style.color = "red";
+    }
+else
+    {
+        reponseElt.style.color = "green";
+    }
 
 /*
 //Pour ajouter des pieces jointes quand on clique sur "buttonElt"

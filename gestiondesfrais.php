@@ -21,28 +21,25 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-                <?php
-                    if(isset($_GET["erreur"]))
-                    {
-                        if($_GET["erreur"] == 1) //s'il y a eut une erreur lors du transfert du frais
-                        {
-                            ?>
-                            <div id="echec">
-                                Erreur : Opération échouée
-                            </div>
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-                            <div id="reussite">
-                                Opération effectuée avec succès
-                            </div>
-                            <?php
-                        }
-                    }
-                ?>
+              
 				<form action="js/ajoutGestionFrais.php" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label id="reponse">
+                            <?php
+                            if(isset($_GET["erreur"]))
+                            {
+                                if($_GET["erreur"] == 1)
+                                {
+                                    echo "Erreur : Opération échouée";
+                                }
+                                else
+                                {
+                                    echo "Opération effectuée avec succès";
+                                }
+                            }
+                            ?>
+                        </label>
+                    </div>
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Type de Frais </label>
