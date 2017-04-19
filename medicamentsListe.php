@@ -30,31 +30,8 @@
 							<th style="font-weight:bold;">Famille</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.php">ADIMOL</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.php">AMOPIL</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.php">AMOXAR</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.php">AMOXI Gé</a></td>
-							<td class="text-left">Antibiotique de la famille des béta-lactamines (pénicilline A)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.php">APATOUX Vitamine C</a></td>
-							<td class="text-left">Antibiotique local (ORL)</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="medicamentsDetail.php">BACTIGEL</a></td>
-							<td class="text-left">Antibiotique antiacnéique local</td>
-						</tr>
+					<tbody id="tableau">
+						<!-- Rempli par le JavaScript -->
 					</tbody>
 				</table>
 
@@ -207,6 +184,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js" ></script>
+        <script src="js/medicamentsListe.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
