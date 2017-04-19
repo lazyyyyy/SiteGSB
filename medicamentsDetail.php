@@ -16,6 +16,9 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
+        
+        <!-- Pour récupérer la variable PHP transmise en GET, depuis le code JavaScript -->
+        <input type="hidden" id="id_produit" value="<?php echo $_GET["id"] ?>" />
 
 
 		<!-- Main -->
@@ -23,47 +26,54 @@
 
 			<div class="container">
 
-				<div class="row">
+				<div class="row" id="nom">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Nom </label>
 					</div>
-					<div class="col-lg-10 col-xs-10">
-						ADIMOL9
-					</div>
+					
 				</div>
-				<div class="row">
+                <div class="row" id="labo">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Laboratoire </label>
+					</div>
+					
+				</div>
+				<div class="row" id="famille">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Famille </label>
 					</div>
-					<div class="col-lg-10 col-xs-10">
-						Antibiotique de la famille des béta-lactamines (pénicilline A)
-					</div>
+					
 				</div>
-				<div class="row">
+				<div class="row" id="composition">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Composition </label>
 					</div>
-					<div class="col-lg-10 col-xs-10">
-						Amoxicilline + Acide clavulanique
-					</div>
+					
 				</div>
-				<div class="row">
+				<div class="row" id="effets">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Effets </label>
 					</div>
-					<div class="col-lg-10 col-xs-10">
-						Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.
-					</div>
+					
 				</div>
-				<div class="row">
+				<div class="row" id="contreIndication">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Contre-indications </label>
 					</div>
-					<div class="col-lg-10 col-xs-10">
-						Ce médicament est contre-indiqué en cas d'allergie aux pénicillines ou aux céphalosporines.
-					</div>
+					
 				</div>
-
+                <div class="row" id="dosage">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Dosage </label>
+					</div>
+					
+				</div>
+                <div class="row" id="typeIndividu">
+					<div class="col-lg-2 col-xs-2 text-right">
+						<label style="font-weight:bold;">Type d'individu concerné </label>
+					</div>
+					
+				</div>
 			
 			</div>
 
@@ -213,6 +223,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js" ></script>
+        <script src="js/medicamentsDetail.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
