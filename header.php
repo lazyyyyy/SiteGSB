@@ -51,9 +51,9 @@
 							<li><a href="medicamentsListe.php">Liste des médicaments</a></li>
 						</ul>	
 					</li>
-				</ul>	
+				</ul>
+                <a href="js/deconnexion.php" ><button id="deconnexion">Deconnexion</button></a>
 			</nav>
-
 		</div>
 	</body>
 </html>
