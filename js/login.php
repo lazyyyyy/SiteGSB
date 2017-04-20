@@ -2,7 +2,8 @@
     session_start();
     include("../../api/fonctions.php");
     $user = connexion($_POST["login"], $_POST["mdp"]);
-	if($user == 'null')
+    echo strlen($user);
+	if(strlen($user) == 41)
 	{
 		header('Location: ../index.php?erreur=1');
 		exit();
