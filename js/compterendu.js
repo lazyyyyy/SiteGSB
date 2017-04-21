@@ -12,10 +12,9 @@ form.addEventListener("submit", function(e){
 var selectPraticien = document.getElementById("selectPraticien");
 
 var data = new FormData();
-data.append("nom", "bar");
+data.append("nom", "");
 
 ajaxPost("http://localhost:8080/api/getPraticienByName.php", data, function(reponse){
-    console.log(reponse);
     var praticiens = JSON.parse(reponse);
     
     praticiens.forEach(function(praticien){
@@ -30,3 +29,18 @@ ajaxPost("http://localhost:8080/api/getPraticienByName.php", data, function(repo
         selectPraticien.appendChild(optionElt);
     });
 }, false);
+
+var motifElt = document.getElementById("motif");
+var data2 = new FormData();
+data2.append("nom_motif", "");
+
+ajaxPost("http://localhost:8080/api/getMotifByName.php", data2, function(reponse){
+    var motifs = JSON.parse(reponse);
+    
+    motifs.forEach(function(motif){
+        var optionElt = document.createElement("option");
+        optionElt.value = motif.id;
+        optionElt.textContent = motif.libelle;
+        motifElt.appendChild(optionElt);
+    });
+});

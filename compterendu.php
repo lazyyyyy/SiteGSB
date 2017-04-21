@@ -48,7 +48,49 @@
 							<label>Motif</label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<textarea class="form-control"name="motif" rows="2"></textarea>
+							<select name="motif" id="motif">
+                                
+                            </select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Coefficients</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<label id="labelConfiance">Confiance</label>
+                            <select for="labelConfiance" name="confiance">
+                                <?php
+                                    for($i = 1; $i <= 10; $i++)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $i ?>" ><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+                            <label id="labelPrescription" >Prescription</label>
+                            <select for="labelPrescription" name="prescription">
+                                <?php
+                                    for($i = 1; $i <= 10; $i++)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $i ?>" ><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+                            <label id="labelNotoriete" >Notoriete</label>
+                            <select for="labelNotoriete" name="notoriete">
+                                <?php
+                                    for($i = 1; $i <= 10; $i++)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $i ?>" ><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
 						</div>
 					</div>
 					<div class="row">
@@ -168,7 +210,7 @@
 										<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
 									</div>
 									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+							+			<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
 									</div>
 									<div class="6u$">
 										<a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>

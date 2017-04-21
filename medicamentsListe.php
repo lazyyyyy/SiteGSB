@@ -22,7 +22,6 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-
 				<table border="1" class="default">
 					<thead>
 						<tr>
