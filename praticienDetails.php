@@ -23,6 +23,8 @@
 
 		<!-- Main -->
 		<div class="wrapper style1">
+            <a href="" ><button>Modifier</button></a>
+            <button id="supprimer">Supprimer</button>
 
 			<div class="container">
 

@@ -41,7 +41,7 @@ ajaxPost("http://localhost:8080/api/getPraticienById.php", data, function(repons
     
     var lieuElt = document.getElementById("lieu");
     var lieu = document.createElement("div");
-    lieu.textContent = praticien.lieu.libelle + " (" + praticien.lieu.adresse + ", " + praticien.lieu.cp + " " + praticien.lieu.ville + ", " + praticien.lieu.pays;
+    lieu.textContent = praticien.lieu.libelle + " (" + praticien.lieu.adresse + ", " + praticien.lieu.cp + " " + praticien.lieu.ville + ", " + praticien.lieu.pays + ")";
     lieuElt.appendChild(lieu);
     
     var regionElt = document.getElementById("region");
@@ -53,4 +53,27 @@ ajaxPost("http://localhost:8080/api/getPraticienById.php", data, function(repons
     var derniereVisite = document.createElement("div");
     derniereVisite.textContent = praticien.date_derniere_visite;
     derniereVisiteElt.appendChild(derniereVisite);
+});
+
+//Pour gérer le bouton "Supprimer"
+document.getElementById("supprimer").addEventListener("click", function(){
+    console.log("click");
+    var reponse = confirm("Voulez-vous supprimer ce praticien?");
+    if(reponse)
+        {
+            var data2 = new FormData();
+            data2.append("id_praticien", document.getElementById("id_praticien").value);
+            
+            ajaxPost("http://localhost:8080/api/removePraticien.php", data2, function(response){
+                var resultat = JSON.parse(response);
+                if(resultat)
+                    {
+                        document.location.href = "http://localhost:8080/html/praticiensListe.php";
+                    }
+                else
+                    {
+                        alert("Erreur : Suppression annulée");
+                    }
+            });
+        }
 });
