@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Détails praticien</title>
+	<title>Modification praticien</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -23,69 +23,108 @@
 
 		<!-- Main -->
 		<div class="wrapper style1">
-            <a href="modifierPraticien.php?id=<?php echo $_GET["id"] ?>" ><button>Modifier</button></a>
-            <button id="supprimer">Supprimer</button>
 
 			<div class="container">
 
-				<div class="row" id="nom">
+				<div class="row" >
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Nom </label>
 					</div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="text" class="form-control" name="nom" id="nom" required />
+                        </div>
 					
 				</div>
                 <div class="row" id="prenom">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Prenom </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <input type="text" class="form-control" name="prenom" id="prenom" required />
+                    </div>
 					
 				</div>
 				<div class="row" id="telFixe">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Téléphone fixe </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <input type="text" class="form-control" name="telFixe" id="telFixe" required />
+                    </div>
 					
 				</div>
 				<div class="row" id="telPortable">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Téléphone portable </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <input type="text" class="form-control" name="telPortable" id="telPortable" required />
+                    </div>
 					
 				</div>
 				<div class="row" id="mail">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Mail </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <input type="text" class="form-control" name="mail" id="mail" required />
+                    </div>
 					
 				</div>
                 <div class="row" id="typePraticien">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Type de praticien </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <select name="typePraticien" id="typePraticien">
+                        </select>
+                    </div>
 					
 				</div>
                 <div class="row" id="specialite">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Spécialité </label>
 					</div>
-					
+					<div class="col-lg-10 col-xs-10">
+                        <select name="specialite" id="specialite">
+                        </select>
+                    </div>
 				</div>
                 <div class="row" id="lieu">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Lieu </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label for="libelleLieu">Libelle: </label>
+                        <input type="text" name="libelleLieu" id="libelleLieu" />
+                        <br/>
+                        <label for="adresselieu">Adresse: </label>
+                        <input type="text" name="adresselieu" id="adresselieu" />
+                        <label for="cpLieu">CP: </label>
+                        <input type="text" name="cpLieu" id="cpLieu" />
+                        <label for="villeLieu">Ville: </label>
+                        <input type="text" name="villeLieu" id="villeLieu" />
+                        <label for="paysLieu">Pays: </label>
+                        <input type="text" name="paysLieu" id="paysLieu" />
+                    </div>
 					
 				</div>
                 <div class="row" id="region">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Region </label>
 					</div>
-					
+					<div class="col-lg-10 col-xs-10">
+                        <select name="region" id="region">
+                        </select>
+                    </div>
 				</div>
 				<div class="row" id="derniereVisite">
 					<div class="col-lg-2 col-xs-2 text-right">
 						<label style="font-weight:bold;">Date dernière visite </label>
 					</div>
+                    <div class="col-lg-10 col-xs-10" >
+                        <input type="date" name="dateDerniereVisite" id="dateDerniereVisite"/>
+                    </div>
 					
 				</div>
 			
@@ -238,7 +277,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js" ></script>
-        <script src="js/praticienDetails.js" ></script>
+        <script src="js/modifierPraticien.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
