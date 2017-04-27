@@ -23,8 +23,35 @@
 
 		<!-- Main -->
 		<div class="wrapper style1">
-            <a href="modifierPraticien.php?id=<?php echo $_GET["id"] ?>" ><button>Modifier</button></a>
-            <button id="supprimer">Supprimer</button>
+            <?php
+                if(isset($_GET["reponse"]))
+                {
+                    if($_GET["reponse"])
+                    {
+                        ?>
+                        <script type="text/javascript">
+                            window.addEventListener("load", function(){
+                                alert("Modification effectuée avec succès");
+                            });
+                        </script>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <script type="text/javascript">
+                            window.addEventListener("load", function(){
+                                alert("Erreur lors de la modification: opération annulée");
+                            });
+                        </script>
+                        <?php
+                    }
+                }
+            ?>
+            <div id="boutons">
+                <a href="modifierPraticien.php?id=<?php echo $_GET["id"] ?>" ><button>Modifier</button></a>
+                <button id="supprimer">Supprimer</button>
+            </div>
 
 			<div class="container">
 

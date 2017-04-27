@@ -25,108 +25,121 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-
-				<div class="row" >
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Nom </label>
-					</div>
-                        <div class="col-lg-10 col-xs-10">
-                            <input type="text" class="form-control" name="nom" id="nom" required />
+                <form method="post" action="js/modificationPraticien.php" id="formulaire" >
+                    <input type="hidden" name="id_praticien" value="<?php echo $_GET["id"] ?>" />
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Nom </label>
                         </div>
-					
-				</div>
-                <div class="row" id="prenom">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Prenom </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10">
-                        <input type="text" class="form-control" name="prenom" id="prenom" required />
+                            <div class="col-lg-10 col-xs-10">
+                                <input type="text" class="form-control" name="nom" id="nom" required />
+                            </div>
+
                     </div>
-					
-				</div>
-				<div class="row" id="telFixe">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Téléphone fixe </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10">
-                        <input type="text" class="form-control" name="telFixe" id="telFixe" required />
+                    <div class="row">
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Prenom </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="text" class="form-control" name="prenom" id="prenom" required />
+                        </div>
+
                     </div>
-					
-				</div>
-				<div class="row" id="telPortable">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Téléphone portable </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10">
-                        <input type="text" class="form-control" name="telPortable" id="telPortable" required />
+                    <div class="row">
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Téléphone fixe </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="text" class="form-control" name="telFixe" id="telFixe" required />
+                            <div id="erreurTelFixe" class="erreur"></div>
+                        </div>
+
                     </div>
-					
-				</div>
-				<div class="row" id="mail">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Mail </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10">
-                        <input type="text" class="form-control" name="mail" id="mail" required />
+                    <div class="row">
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Téléphone portable </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="text" class="form-control" name="telPortable" id="telPortable" required />
+                            <div id="erreurTelPortable" class="erreur"></div>
+                        </div>
+
                     </div>
-					
-				</div>
-                <div class="row" id="typePraticien">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Type de praticien </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10">
-                        <select name="typePraticien" id="typePraticien">
-                        </select>
+                    <div class="row">
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Mail </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="text" class="form-control" name="mail" id="mail" required />
+                            <div id="erreurMail" class="erreur"></div>
+                        </div>
+
                     </div>
-					
-				</div>
-                <div class="row" id="specialite">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Spécialité </label>
-					</div>
-					<div class="col-lg-10 col-xs-10">
-                        <select name="specialite" id="specialite">
-                        </select>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Type de praticien </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <select name="typePraticien" id="typePraticien">
+                            </select>
+                        </div>
+
                     </div>
-				</div>
-                <div class="row" id="lieu">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Lieu </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label for="libelleLieu">Libelle: </label>
-                        <input type="text" name="libelleLieu" id="libelleLieu" />
-                        <br/>
-                        <label for="adresselieu">Adresse: </label>
-                        <input type="text" name="adresselieu" id="adresselieu" />
-                        <label for="cpLieu">CP: </label>
-                        <input type="text" name="cpLieu" id="cpLieu" />
-                        <label for="villeLieu">Ville: </label>
-                        <input type="text" name="villeLieu" id="villeLieu" />
-                        <label for="paysLieu">Pays: </label>
-                        <input type="text" name="paysLieu" id="paysLieu" />
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Spécialité </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <select name="specialite" id="specialite">
+                            </select>
+                        </div>
                     </div>
-					
-				</div>
-                <div class="row" id="region">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Region </label>
-					</div>
-					<div class="col-lg-10 col-xs-10">
-                        <select name="region" id="region">
-                        </select>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Lieu </label>
+                        </div>
+                        
+                        
+                        <div class="col-lg-10 col-xs-10">
+                            <label for="libelleLieu">Libellé: </label>
+                            <select id="libelleLieu" name="libelleLieu">
+                            </select>
+                            <label for="adresselieu">Adresse: </label>
+                            <input type="text" name="adresselieu" id="adresselieu" />
+
+                            <label for="cpLieu">CP: </label>
+                            <input type="text" name="cpLieu" id="cpLieu" format="NNNN" />
+                            <label id="erreurCp" class="erreur"></label>
+
+                            <label for="villeLieu">Ville: </label>
+                            <input type="text" name="villeLieu" id="villeLieu" />
+                            <label for="paysLieu">Pays: </label>
+                            <input type="text" name="paysLieu" id="paysLieu" />
+                        </div>
+
                     </div>
-				</div>
-				<div class="row" id="derniereVisite">
-					<div class="col-lg-2 col-xs-2 text-right">
-						<label style="font-weight:bold;">Date dernière visite </label>
-					</div>
-                    <div class="col-lg-10 col-xs-10" >
-                        <input type="date" name="dateDerniereVisite" id="dateDerniereVisite"/>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Region </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <select name="region" id="region">
+                            </select>
+                        </div>
                     </div>
-					
-				</div>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Date dernière visite </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10" >
+                            <input type="date" name="dateDerniereVisite" id="dateDerniereVisite"/>
+                            <div id="erreurDate" class="erreur"></div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Valider" />
+                </form>
+
+				
 			
 			</div>
 

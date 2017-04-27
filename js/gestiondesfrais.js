@@ -18,7 +18,7 @@ var messageDate = document.getElementById("messageDate");
 messageDate.style.color = "red";
 date.addEventListener("blur", function(e){
     var regexDate = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
-    if(!regexDate.test(e.target.value)){messageDate.textContent = "Le format de la date n'est pas valable, veuillez entrer une date au format yyyy-mm-jj"}
+    if(!regexDate.test(e.target.value)){messageDate.textContent = "Le format de la date n'est pas valable, veuillez entrer une date au format AAAA-MM-JJ"}
     else{
         var date_temp = e.target.value.split('-');
         date_temp[1] -=1;        // On rectifie le mois !!!
