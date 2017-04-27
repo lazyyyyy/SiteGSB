@@ -1,6 +1,7 @@
 var listeLieux = [];
 
-var data = new FormData();
+window.addEventListener("load", function(){
+    var data = new FormData();
 data.append("id_praticien", document.getElementById("id_praticien").value);
 
 ajaxPost("http://localhost:8080/api/getPraticienById.php", data, function(reponse){
@@ -164,6 +165,8 @@ ajaxPost("http://localhost:8080/api/getPraticienById.php", data, function(repons
             }
         }
     });
+});
+    
 });
 
 document.getElementById("formulaire").addEventListener("submit", function(e){
