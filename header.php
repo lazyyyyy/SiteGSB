@@ -13,6 +13,21 @@
         
         <!--Pour récupérer la variable de session en Javascript-->
         <input type="hidden" name="user_json" value="<?php echo $_SESSION["user_id_json"] ?>" id="user_json"/>
+        <?php
+            include("../api/fonctions.php");
+            $user = json_decode(getUtilisateurById($_SESSION["user_id_json"]));
+            ?>
+            <input type="hidden" name="fonction_utilisateur" value="<?php echo strtoupper($user->fonction_utilisateur->libelle) ?>" />
+            <?php
+            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+            {
+                ?>
+                    <div>
+                        <label id="admin">ADMINISTRATEUR</label>
+                    </div>
+                <?php
+            }
+        ?>
 		<div id="header">
 
 			<!-- Inner -->

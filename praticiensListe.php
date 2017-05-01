@@ -23,7 +23,15 @@
 
 		<!-- Main -->
 		<div class="wrapper style1">
-            <a href="ajouterPraticien.php"><button>Ajouter</button></a>
+            
+            <?php
+            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+            {
+                ?>
+                <a href="ajouterPraticien.php"><button>Ajouter</button></a>
+            <?php
+            }
+            ?>
 
 			<div class="container">
 				<table border="1" class="default">

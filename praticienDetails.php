@@ -48,11 +48,18 @@
                     }
                 }
             ?>
-            <div id="boutons">
-                <a href="modifierPraticien.php?id=<?php echo $_GET["id"] ?>" ><button>Modifier</button></a>
-                <button id="supprimer">Supprimer</button>
-            </div>
-
+            <?php
+            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+            {
+                ?>
+                <div id="boutons">
+                    <a href="modifierPraticien.php?id=<?php echo $_GET["id"] ?>" ><button>Modifier</button></a>
+                    <button id="supprimer">Supprimer</button>
+                </div>
+                <?php
+            }
+            ?>
+                
 			<div class="container">
 
 				<div class="row" id="nom">
