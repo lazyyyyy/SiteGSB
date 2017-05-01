@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Modification praticien</title>
+	<title>Ajout praticien</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -16,17 +16,13 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
-        
-        <!-- Pour récupérer la variable PHP transmise en GET, depuis le code JavaScript -->
-        <input type="hidden" id="id_praticien" value="<?php echo $_GET["id"] ?>" />
 
 
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-                <form method="post" action="js/modificationPraticien.php" id="formulaire" >
-                    <input type="hidden" name="id_praticien" value="<?php echo $_GET["id"] ?>" />
+                <form id="formulaire" >
                     <div class="row" >
                         <div class="col-lg-2 col-xs-2 text-right">
                             <label style="font-weight:bold;">Nom </label>
@@ -95,11 +91,12 @@
                         </div>
                     </div>
                     <div class="row" >
+                        
                         <div class="col-lg-2 col-xs-2 text-right">
                             <label style="font-weight:bold;">Lieu </label>
                         </div>
-                        
-                        
+
+
                         <div class="col-lg-10 col-xs-10">
                             <label for="libelleLieu">Libellé: </label>
                             <select id="libelleLieu" name="libelleLieu" required>
@@ -291,7 +288,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js" ></script>
-        <script src="js/modifierPraticien.js" ></script>
+        <script src="js/ajouterPraticien.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

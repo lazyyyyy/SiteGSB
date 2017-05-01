@@ -23,6 +23,7 @@
 
 		<!-- Main -->
 		<div class="wrapper style1">
+            <a href="ajouterPraticien.php"><button>Ajouter</button></a>
 
 			<div class="container">
 				<table border="1" class="default">
