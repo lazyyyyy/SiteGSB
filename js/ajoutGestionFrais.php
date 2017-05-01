@@ -1,11 +1,10 @@
 <?php
 	include("../../api/fonctions.php");
 	try{
+        var_dump($_POST);
 		//je crée le nouveau frais dans la base de données
-		
-		var_dump($_FILES);
-		
 		$reponse = json_decode(addFrais($_POST["montant"], $_POST["commentaire"], $_POST["date"], $_POST["id_utilisateur"], $_POST["typeFrais"]));
+        echo $reponse;
 		if($reponse)
 		{
 			//je récupère l'id du frais créé
@@ -24,6 +23,7 @@
 				$extension_upload = strtolower(  substr(  strrchr($_FILES['fichier']['name'], '.')  ,1)  );
 				$destination = "../pj/".md5(uniqid(rand(), true)).".".$extension_upload;
 				$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$destination);
+                $destination = substr($destination, 3);
 				if ($resultat) 
 				{
 					if(json_decode(addPj($destination, $_FILES["fichier"]['name'], $idFrais)))

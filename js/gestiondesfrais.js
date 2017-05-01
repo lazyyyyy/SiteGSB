@@ -43,12 +43,6 @@ formElt.addEventListener("submit", function(e){
         }
 });
 
-document.getElementById("json").style.display = "none";
-var json = document.getElementById("json").textContent;
-console.log(json);
-var user = JSON.parse(json);
-document.getElementById("id_utilisateur").value = user.id;
-
 var reponseElt = document.getElementById("reponse");
 if(reponseElt.textContent === "Erreur : Opération échouée")
     {

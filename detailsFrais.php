@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Gestion des frais</title>
+	<title>Details Fiche Frais</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -15,84 +15,81 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="right-sidebar">
+    
+    <input type="hidden" name="idFrais" id="idFrais" value="<?php echo $_GET["id"] ?>" />
+    
 	<div id="page-wrapper">
 
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-              
-				<form action="js/ajoutGestionFrais.php" method="post" enctype="multipart/form-data">
-                    <div>
-                        <label id="reponse">
-                            <?php
-                            if(isset($_GET["erreur"]))
-                            {
-                                if($_GET["erreur"] == 1)
-                                {
-                                    echo "Erreur : Opération échouée";
-                                }
-                                else
-                                {
-                                    echo "Opération effectuée avec succès";
-                                }
-                            }
-                            ?>
-                        </label>
+                
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>N° de Fiche </label>
                     </div>
-					<div class="row">
-						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Type de Frais </label>
-						</div>
-						<div class="col-lg-10 col-xs-10">
-							<select name="typeFrais" class="form-control" style="display:inline;" id="typeDeFrais">
-		 						
-		 					</select>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Date </label>
-						</div>
-						<div class="col-lg-10 col-xs-10">
-							<input type="date" class="form-control" name="date" id="date" required />
-                            <div id = "messageDate"></div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Montant </label>
-						</div>
-						<div class="col-lg-10 col-xs-10">
-							<input type="text" class="form-control" name="montant" required />
-						</div>
-					</div>
-                    <div class="row">
-						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Commentaire </label>
-						</div>
-						<div class="col-lg-10 col-xs-10">
-							<textarea class="form-control"name="commentaire" rows="3"></textarea>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-2 col-xs-2 text-right">
-							<label>Pièce jointe </label>
-						</div>
-						<div class="col-lg-10 col-xs-10">
-                                <input type="file" class="form-control" name="fichier"/>
-						</div>
-					</div>
-                    
-                    <input type="hidden" name="id_utilisateur" id="id_utilisateur" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
-                    
-					<div class="row">
-						<div class="col-xs-12 col-lg-12 text-right">
-							<input type="submit" value="Enregistrer" class="btn btn-success" />
-						</div>
-					</div>
-				</form>
-			
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="numero"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Date de création </label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="dateCreation"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Utilisateur</label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="utilisateur"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Type de Frais </label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="typeFrais"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Date du frais</label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="date"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Montant </label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="montant"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Commentaire </label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="commentaire"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Pièce jointe </label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10" id="pj">
+                            
+                    </div>
+                </div>
+
 			</div>
 
 		</div>
@@ -242,7 +239,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js"></script>
-        <script src="js/gestiondesfrais.js"></script>
+        <script src="js/detailsFrais.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

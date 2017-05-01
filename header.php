@@ -38,7 +38,7 @@
 					<p>Entreprise spécialisée dans l'industrie pharmaceutique</p>
 				</header>
 				<footer>
-					<a href="#banner" class="button circled scrolly">Accueil</a>
+					<a href="home.php" class="button circled scrolly">Accueil</a>
 				</footer>
 			</div>
 
@@ -48,7 +48,19 @@
 					<li class="active"><a href="home.php">Home</a></li>
 
 					<li><a href="agenda.php">Agenda</a></li>
-					<li><a href="gestiondesfrais.php">Gestion des frais</a></li>
+					<li><a href="gestiondesfrais.php">Gestion des frais</a>
+                        <?php
+                            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                            {
+                                ?>
+                                <ul>
+                                    <a href="gestiondesfrais.php"><li>Nouvelle fiche</li></a>
+                                    <a href="gestiondesfraisListe.php"><li>Liste des fiches</li></a>
+                                </ul>
+                        <?php
+                            }
+                        ?>
+                    </li>
 					<li><a href="compterendu.php">Compte Rendu</a></li>
 					<li><a href="parcauto.php">Parc Auto</a></li>
 					<li>
