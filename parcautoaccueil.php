@@ -1,7 +1,7 @@
 <?php
     include("header.php");
 ?>
-//test Kevin
+
 <!DOCTYPE HTML>
 <html>
 <head>
