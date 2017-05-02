@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
+@import url("font-awesome.min.css");
+
+.map1{
+	position: absolute;
+    left: 524px;
+    top: 565px;
+    z-index: 1;
+}
+    
+.map1:hover {
+height: 222px;	
+width: 179px;
+z-index: 2;
+}
+
+.map2{
+	position: absolute;
+	left: 675px;
+	top: 520px;
+	z-index: 1;
+}
+
+.map2:hover {
+height:125px;
+width:163px;
+z-index: 2;
+}
+
+
+.map3{
+	position:absolute;
+	left: 665px;
+	top: 600px;
+	z-index: 1;
+}
+
+.map3:hover {
+height:214px;
+width:136px;
+z-index: 2;
+}
+
+
+.map4{
+	position:relative;
+	left: 575px;
+	top: -14px;
+	z-index: 1;
+}
+
+.map4:hover {
+height:252px;
+width:172px;
+z-index: 2;
+}
+
+
+.map5{
+	position:absolute;
+	left: 585px;
+	top: 755px;
+	z-index: 1;
+}
+
+.map5:hover {
+height:165px;
+width:317px;
+z-index: 2;
+}
+
+.test{
+	width: 100px;
+}

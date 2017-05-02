@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Parc automobile </title>
+	<title>Porsche Panamera </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -17,43 +17,37 @@
 <body class="right-sidebar">
 	<div id="page-wrapper">
 
-
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
 
-				<table border="1" class="default">
-					<thead>
-						<tr>
-							<th style="font-weight:bold; width:40%;">Parc auto</th>
-							<th style="font-weight:bold; width:30%;">Adresse</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 1 <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 1</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 2 <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 2</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 3<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 3</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 4<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 4</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 5<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 5</td>
-						</tr>
-					</tbody>
-				</table>
-			
+				<div class="row">
+					<div class="col-lg-6 col-lg-offset-3">
+						<div class="text-center"><img src="" width="600" height="400" alt="image voiture" /></div>
+	
+						<table border="1" class="default">
+							<tbody>
+								<tr>
+									<td class="text-left"><a href="#"><div>Ville disponible <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
+								</tr>
+								<tr>
+									<td class="text-left"><a href="#"><div>Ajouter en favori<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
+								</tr>
+								<tr>
+									<td class="text-left"><a href="#"><div>Caractéristiques complètes<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
+								</tr>
+								<tr>
+									<td class="text-left"><button><div>Réserver<div style="display:inline-block; float:right;"></div></div></button></td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+				
 			</div>
 
 		</div>
