@@ -1,4 +1,5 @@
 var listeLaboratoires = [];
+var idUser = document.getElementById("id_user").value;
 
 document.getElementById("telFixe").addEventListener("blur", function(e){
         var regex = /\d\d\d\d\d\d\d\d\d\d/;
@@ -111,22 +112,23 @@ document.getElementById("formulaire").addEventListener("submit", function(e){
         }
     else{
              var data = new FormData();
+            data.append("id", idUser);
             data.append("nom", document.getElementById("nom").value);
             data.append("prenom", document.getElementById("prenom").value);
             data.append("date_naissance", document.getElementById("dateNaissance").value);
             data.append("date_embauche", document.getElementById("dateEmbauche").value);
             data.append("telephone_portable", document.getElementById("telPortable").value);
             data.append("telephone_fixe", document.getElementById("telFixe").value);
-            data.append("email", document.getElementById("mail").value);
+            data.append("mail", document.getElementById("mail").value);
             data.append("id_laboratoire", document.getElementById("laboratoire").value);
             data.append("id_fonction_utilisateur", document.getElementById("droits").value);
-            ajaxPost("http://localhost:8080/api/addUtilisateur.php", data, function(reponse){
+            ajaxPost("http://localhost:8080/api/modifierUtilisateur.php", data, function(reponse){
                 console.log(reponse);
                 var rep = JSON.parse(reponse);
-                if(rep.creation)
+                if(rep)
                     {
                         
-                        document.location.href = "utilisateursListe.php?new=true&login=" + rep.login + "&mdp=" + rep.mdp;
+                        document.location.href = "utilisateurDetails.php?id=" + idUser;
                     }
                 else{
                     alert("Opération échouée: une erreur est survenue");
@@ -205,3 +207,18 @@ window.addEventListener("load", function(){
                }
         }
 });*/
+
+var data = new FormData();
+data.append("id_utilisateur", idUser);
+ajaxPost("http://localhost:8080/api/getUtilisateurById.php", data, function(reponse){
+    var user = JSON.parse(reponse);
+    document.getElementById("nom").value = user.nom;
+    document.getElementById("prenom").value = user.prenom;
+    document.getElementById("dateNaissance").value = user.date_naissance;
+    document.getElementById("dateEmbauche").value = user.date_embauche;
+    document.getElementById("telFixe").value = user.telephone_fixe;
+    document.getElementById("telPortable").value = user.telephone_portable;
+    document.getElementById("mail").value = user.mail;
+    document.getElementById("droits").value = user.fonction_utilisateur.id;
+    document.getElementById("laboratoire").value = user.laboratoire.id;
+});

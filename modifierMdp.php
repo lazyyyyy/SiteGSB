@@ -10,7 +10,7 @@
 -->
 <html>
 <head>
-	<title>Utilisateurs Liste</title>
+	<title>Modifier mot de passe</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -19,43 +19,35 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
-
-
+        
+        <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
+        
 		<!-- Main -->
 		<div class="wrapper style1">
             
-            <?php
-            if(isset($_GET["new"]) && $_GET["new"] === "true")
-            {
-                ?>
-                <input type="hidden" name="login" id="login" value="<?php echo $_GET["login"] ?>" />
-                <input type="hidden" name="mdp" id="mdp" value="<?php echo $_GET["mdp"] ?>" />
-                <?php
-            }
-            
-            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
-            {
-                ?>
-                <a href="nouvelUtilisateur.php"><button class="boutons">Ajouter</button></a>
-            <?php
-            }
-            ?>
+            <form id="formulaire">
+                <div class="row" >
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Nouveau Mot de passe: </label>
+                    </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="password" class="form-control" name="mdp1" id="mdp1" required />
+                        </div>
 
-			<div class="container">
-				<table border="1" class="default">
-					<thead>
-						<tr>
-							<th style="font-weight:bold;">NOM Prénom</th>
-                            <th style="font-weight:bold;">Droits</th>
-						</tr>
-					</thead>
-					<tbody id="tableau">
-						<!-- Rempli par le JavaScript -->
-					</tbody>
-				</table>
+                </div>
+                <div class="row" >
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Confirmation mot de passe: </label>
+                    </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <input type="password" class="form-control" name="mdp2" id="mdp2" required />
+                        </div>
 
-			
-			</div>
+                </div>
+                <div>
+                    <input type="submit" name="Valider" />
+                 </div>
+            </form>
 
 		</div>
 
@@ -208,7 +200,7 @@
 
 				<!-- Scripts -->
                 <script src="js/ajax.js"></script>
-                <script src="js/utilisateursListe.js"></script>
+                <script src="js/modifierMdp.js"></script>
 				<script src="assets/js/jquery.min.js"></script>
 				<script src="assets/js/jquery.dropotron.min.js"></script>
 				<script src="assets/js/jquery.scrolly.min.js"></script>

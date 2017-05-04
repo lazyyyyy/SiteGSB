@@ -38,7 +38,7 @@
 					<p>Entreprise spécialisée dans l'industrie pharmaceutique</p>
 				</header>
 				<footer>
-					<a href="home.php" class="button circled scrolly">Accueil</a>
+					<a href="monCompte.php" class="button circled scrolly">Compte</a>
 				</footer>
 			</div>
 
@@ -72,11 +72,7 @@
 
 					</li>
 					<li>
-						<a href="#">Médicaments</a>
-						<ul>
-							<li><a href="medicaments.php">Rechercher un médicament</a></li>
-							<li><a href="medicamentsListe.php">Liste des médicaments</a></li>
-						</ul>	
+						<a href="medicamentsListe.php">Médicaments</a>
 					</li>
                     
                      <?php
@@ -84,11 +80,7 @@
                         {
                             ?>
                                 <li>
-                                    <a href="#">Utilisateurs</a>
-                                    <ul>
-                                        <li><a href="nouvelUtilisateur.php">Nouvel Utilisateur</a></li>
-                                        <li><a href="utilisateursListe.php">Liste des utilisateurs</a></li>
-                                    </ul>	
+                                    <a href="utilisateursListe.php">Utilisateurs</a>
                                 </li>
                             <?php
                         }

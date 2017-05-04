@@ -10,7 +10,7 @@
 -->
 <html>
 <head>
-	<title>Utilisateurs Liste</title>
+	<title>Mon Compte</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -19,43 +19,36 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
-
+        
+        <?php
+        if(isset($_GET["newLogin"]) && $_GET["newLogin"] == "true")
+        {
+            ?>
+            <input type="hidden" name="newLogin" id="newLogin" value="true" />
+            <?php
+        }
+        ?>
+        <?php
+        if(isset($_GET["newMdp"]) && $_GET["newMdp"] == "true")
+        {
+            ?>
+            <input type="hidden" name="newMdp" id="newMdp" value="true" />
+            <?php
+        }
+        ?>
 
 		<!-- Main -->
 		<div class="wrapper style1">
             
-            <?php
-            if(isset($_GET["new"]) && $_GET["new"] === "true")
-            {
-                ?>
-                <input type="hidden" name="login" id="login" value="<?php echo $_GET["login"] ?>" />
-                <input type="hidden" name="mdp" id="mdp" value="<?php echo $_GET["mdp"] ?>" />
-                <?php
-            }
-            
-            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
-            {
-                ?>
-                <a href="nouvelUtilisateur.php"><button class="boutons">Ajouter</button></a>
-            <?php
-            }
-            ?>
-
-			<div class="container">
-				<table border="1" class="default">
-					<thead>
-						<tr>
-							<th style="font-weight:bold;">NOM Prénom</th>
-                            <th style="font-weight:bold;">Droits</th>
-						</tr>
-					</thead>
-					<tbody id="tableau">
-						<!-- Rempli par le JavaScript -->
-					</tbody>
-				</table>
-
-			
-			</div>
+            <div>
+                <a href="modifierIdentifiant.php" >Changer mon identifiant de connexion</a>
+            </div>
+            <div>
+                <a href="modifierMdp.php">Changer mon mot de passe</a>
+            </div>
+            <div>
+                <a href="modifierUtilisateur.php?id=<?php echo json_decode($_SESSION["user_id_json"]) ?>">Modifier mes informations</a>
+            </div>
 
 		</div>
 
@@ -208,7 +201,7 @@
 
 				<!-- Scripts -->
                 <script src="js/ajax.js"></script>
-                <script src="js/utilisateursListe.js"></script>
+                <script src="js/monCompte.js"></script>
 				<script src="assets/js/jquery.min.js"></script>
 				<script src="assets/js/jquery.dropotron.min.js"></script>
 				<script src="assets/js/jquery.scrolly.min.js"></script>
