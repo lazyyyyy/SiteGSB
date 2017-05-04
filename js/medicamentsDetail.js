@@ -1,5 +1,4 @@
 var idProduit = document.getElementById("id_produit").value;
-console.log(idProduit);
 
 var data = new FormData();
 data.append("id_produit", idProduit);
@@ -24,18 +23,21 @@ ajaxPost("http://localhost:8080/api/getProduitById.php", data, function(reponse)
     
     var compositionElement = document.getElementById("composition");
     var divComposition = document.createElement("div");
-    for(var i = 0; i < produit.composant.length; i++)
+    if(produit.composant !== null)
         {
-            if(i == produit.composant.length -1)
-                {
-                    divComposition.textContent += produit.composant[i].libelle;
-                }
-            else
-                {
-                    divComposition.textContent += produit.composant[i].libelle + ", ";
-                }
+            for(var i = 0; i < produit.composant.length; i++)
+            {
+                if(i == produit.composant.length -1)
+                    {
+                        divComposition.textContent += produit.composant[i].libelle;
+                    }
+                else
+                    {
+                        divComposition.textContent += produit.composant[i].libelle + ", ";
+                    }
+            }
+            compositionElement.appendChild(divComposition);
         }
-    compositionElement.appendChild(divComposition);
     
     var effetsElement = document.getElementById("effets");
     var divEffets = document.createElement("div");
@@ -56,4 +58,38 @@ ajaxPost("http://localhost:8080/api/getProduitById.php", data, function(reponse)
     var divTypeIndividu = document.createElement("div");
     divTypeIndividu.textContent = produit.type_individu;
     typeIndividuElement.appendChild(divTypeIndividu);
+});
+
+
+document.getElementById("supprimer").addEventListener("click", function(){
+    var data = new FormData();
+    data.append("id_produit", idProduit);
+    ajaxPost("http://localhost:8080/api/getCompteRenduByIdProduit.php", data, function(reponse){
+        var comptesRendus = JSON.parse(reponse);
+        if(comptesRendus !== null && comptesRendus.size > 0)
+            {
+                alert("Vous ne pouvez pas supprimer ce produit car un compte rendu est basé sur ce médicament");
+            }
+        else
+            {
+                var repUtilisateur = confirm("Etes-vous sûr de vouloir supprimer ce produit?");
+                if(repUtilisateur)
+                    {
+                        var data = new FormData();
+                        data.append("id_produit", idProduit);
+
+                        ajaxPost("http://localhost:8080/api/removeProduitById.php", data, function(reponse){
+                            var rep = JSON.parse(reponse);
+                            if(rep)
+                                {
+                                    document.location.href="medicamentsListe.php";
+                                }
+                            else{
+                                alert("Suppression échouée");
+                            }
+                        });
+                    }
+            }
+    });
+    
 });

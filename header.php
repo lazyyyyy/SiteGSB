@@ -62,7 +62,7 @@
                         ?>
                     </li>
 					<li><a href="compterendu.php">Compte Rendu</a></li>
-					<li><a href="parcauto.php">Parc Auto</a></li>
+					<li><a href="parcautoaccueil.php">Parc Auto</a></li>
 					<li>
 						<a href="#">Praticiens</a>
 						<ul>
@@ -78,6 +78,21 @@
 							<li><a href="medicamentsListe.php">Liste des médicaments</a></li>
 						</ul>	
 					</li>
+                    
+                     <?php
+                        if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                        {
+                            ?>
+                                <li>
+                                    <a href="#">Utilisateurs</a>
+                                    <ul>
+                                        <li><a href="nouvelUtilisateur.php">Nouvel Utilisateur</a></li>
+                                        <li><a href="utilisateursListe.php">Liste des utilisateurs</a></li>
+                                    </ul>	
+                                </li>
+                            <?php
+                        }
+                       ?>
 				</ul>
                 <a href="js/deconnexion.php" ><button id="deconnexion">Deconnexion</button></a>
 			</nav>

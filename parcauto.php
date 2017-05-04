@@ -15,6 +15,9 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="right-sidebar">
+    
+    <input type="hidden" name="id_region" id="id_region" value="<?php echo $_GET["id"] ?>" />
+    
 	<div id="page-wrapper">
 
 
@@ -30,27 +33,8 @@
 							<th style="font-weight:bold; width:30%;">Adresse</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 1 <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 1</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 2 <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 2</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 3<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 3</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 4<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 4</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="parcautoVoiture.php"><div>Zone 5<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Adresse 5</td>
-						</tr>
+					<tbody id="tableau">
+						
 					</tbody>
 				</table>
 			
@@ -70,6 +54,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js"></script>
+        <script src="js/parcauto.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

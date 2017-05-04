@@ -31,3 +31,19 @@ ajaxPost("http://localhost:8080/api/getFraisById.php", data, function(reponse){
     });
     
 });
+
+document.getElementById("supprimer").addEventListener("click", function(){
+    var repUtilisateur = confirm("Etes-vous sûr de vouloir supprimer cette fiche de frais?");
+    if(repUtilisateur)
+        {
+            var idFrais = document.getElementById("idFrais").value;
+    
+            var data = new FormData();
+            data.append("id_frais", idFrais);
+            console.log(idFrais);
+
+            ajaxPost("http://localhost:8080/api/removeFraisById.php", data, function(reponse){
+                document.location.href = "gestiondesfraisListe.php";
+            });
+        }
+});

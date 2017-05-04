@@ -16,8 +16,9 @@
 </head>
 <body class="right-sidebar">
 	<div id="page-wrapper">
-
-
+        
+        <input type="hidden" name="id_parcauto" id="id_parcauto" value="<?php echo $_GET["id"] ?>" />
+        
 		<!-- Main -->
 		<div class="wrapper style1">
 
@@ -26,27 +27,13 @@
 				<table border="1" class="default">
 					<thead>
 						<tr>
-							<th style="font-weight:bold; width:10%;">N&deg;</th>
+							<th style="font-weight:bold; width:10%;">Immatricule</th>
 							<th style="font-weight:bold; width:40%;">Modèle</th>
 							<th style="font-weight:bold; width:30%;">Fabricant</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left">1</td>
-							<td class="text-left"><a href="parcautoDetailVoiture.php"><div>488 GTB <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Ferrari</td>
-						</tr>
-						<tr>
-							<td class="text-left">1</td>
-							<td class="text-left"><a href="parcautoDetailVoiture.php"><div>Panamera <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Porscche</td>
-						</tr>
-						<tr>
-							<td class="text-left">1</td>
-							<td class="text-left"><a href="parcautoDetailVoiture.php"><div>RS3 <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-							<td class="text-left">Audi</td>
-						</tr>
+					<tbody id="tableau">
+						
 					</tbody>
 				</table>
 			
@@ -66,6 +53,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js"></script>
+        <script src="js/parcautoVoiture.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

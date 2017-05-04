@@ -24,11 +24,11 @@
 
 			<div class="container">
 				 
-				 <a href="parcauto.php"><img class="map1"  src="images/map1.png"  /></a>
-				 <a href="parcauto.php"><img class="map2"  src="images/map2.1.png"  /></a>  
-				 <a href="parcauto.php"><img class="map3"  src="images/map3.png"  /></a>   
-				 <a href="parcauto.php"><img class="map4"  src="images/map4.png"  /></a>
-				 <a href="parcauto.php"><img class="map5"  src="images/map5.png"  /></a>
+				 <a href="parcauto.php?id=3"><img class="map1"  src="images/map1.png"  /></a>
+				 <a href="parcauto.php?id=1"><img class="map2"  src="images/map2.1.png"  /></a>  
+				 <a href="parcauto.php?id=5"><img class="map3"  src="images/map3.png"  /></a>   
+				 <a href="parcauto.php?id=2"><img class="map4"  src="images/map4.png"  /></a>
+				 <a href="parcauto.php?id=4"><img class="map5"  src="images/map5.png"  /></a>
 
 			
 			
