@@ -23,13 +23,14 @@
 
 			<div class="container">
 
-				<form action="" method="post">
+				<form id="formulaire">
+                    <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Praticien</label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<select name="praticien" class="form-control" style="display:inline;" id="selectPraticien">
+							<select name="praticien" class="form-control" style="display:inline;" id="selectPraticien" required>
                                 <optgroup>
                                     
                                 </optgroup>
@@ -41,7 +42,9 @@
 							<label>Date</label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<input type="date" class="form-control" name="anniversaire" />
+							<input type="date" class="form-control" name="date" id="date" required/>
+                            <label id="erreurDate">
+                        </label>
 						</div>
 					</div>
 					<div class="row">
@@ -49,7 +52,7 @@
 							<label>Motif</label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<select name="motif" id="motif">
+							<select name="motif" id="motif" required>
                                 
                             </select>
 						</div>
@@ -60,7 +63,7 @@
 						</div>
 						<div class="col-lg-10 col-xs-10">
 							<label id="labelConfiance">Confiance</label>
-                            <select for="labelConfiance" name="confiance">
+                            <select for="labelConfiance" name="confiance" id="confiance" required>
                                 <?php
                                     for($i = 1; $i <= 10; $i++)
                                     {
@@ -71,7 +74,7 @@
                                 ?>
                             </select>
                             <label id="labelPrescription" >Prescription</label>
-                            <select for="labelPrescription" name="prescription">
+                            <select for="labelPrescription" name="prescription" id="prescription" required>
                                 <?php
                                     for($i = 1; $i <= 10; $i++)
                                     {
@@ -82,7 +85,7 @@
                                 ?>
                             </select>
                             <label id="labelNotoriete" >Notoriete</label>
-                            <select for="labelNotoriete" name="notoriete">
+                            <select for="labelNotoriete" name="notoriete" id="notoriete" required>
                                 <?php
                                     for($i = 1; $i <= 10; $i++)
                                     {
@@ -99,9 +102,26 @@
 							<label>Bilan</label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-							<textarea class="form-control"name="bilan" rows="3"></textarea>
+							<textarea class="form-control"name="bilan" id="bilan" rows="3" required></textarea>
 						</div>
 					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Produit présenté</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="produits" required></select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Nombre d'échantillons donnés</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="number" name="echantillons" id="echantillons" required/>
+						</div>
+					</div>
+                    
 					<div class="row">
 						<div class="col-xs-12 col-lg-12 text-right">
 							<button type="submit" name="lien1" class="btn btn-primary"> <i class="fa fa-plus"></i> Ajouter</button>

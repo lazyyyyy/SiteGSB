@@ -49,20 +49,40 @@
 
 					<li><a href="agenda.php">Agenda</a></li>
 					<li><a href="gestiondesfrais.php">Gestion des frais</a>
+                        <ul>
+                                    <a href="gestiondesfrais.php"><li>Nouvelle fiche</li></a>
+                                    <a href="mesFichesFrais.php?id=<?php echo json_decode($_SESSION["user_id_json"]) ?>"><li>Mes fiches de frais</li></a>
                         <?php
                             if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
                             {
                                 ?>
-                                <ul>
-                                    <a href="gestiondesfrais.php"><li>Nouvelle fiche</li></a>
                                     <a href="gestiondesfraisListe.php"><li>Liste des fiches</li></a>
-                                </ul>
-                        <?php
+                                <?php
                             }
                         ?>
+                            </ul>
                     </li>
-					<li><a href="compterendu.php">Compte Rendu</a></li>
-					<li><a href="parcautoaccueil.php">Parc Auto</a></li>
+					<li><a href="compterendu.php">Compte Rendu</a>
+                        <ul>
+                                    <a href="compterendu.php"><li>Nouvelle fiche</li></a>
+                                    <a href="mesComptesRendus.php?id=<?php echo json_decode($_SESSION["user_id_json"]) ?>"><li>Mes comptes rendus</li></a>
+                        <?php
+                            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                            {
+                                ?>
+                                    <a href="compterenduListe.php"><li>Liste des comptes rendus</li></a>
+                                <?php
+                            }
+                        ?>
+                            </ul>
+                    </li>
+					<li>
+                        <a href="parcautoaccueil.php">Parc Auto</a>
+                        <ul>
+							<li><a href="parcautoaccueil.php">Nouvelle réservation</a></li>
+							<li><a href="mesReservationsVehicules.php?id=<?php echo json_decode($_SESSION["user_id_json"]) ?>">Mes réservations</a></li>
+						</ul>
+                    </li>
 					<li>
 						<a href="#">Praticiens</a>
 						<ul>

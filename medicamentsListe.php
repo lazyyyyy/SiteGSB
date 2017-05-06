@@ -22,6 +22,16 @@
 		<div class="wrapper style1">
 
 			<div class="container">
+                
+                
+                <?php
+                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                    {
+                        ?>
+                            <a href="ajouterMedicament.php"><button class="boutons" id="ajouter">Ajouter</button></a>
+                        <?php
+                    }
+                ?>
 				<table border="1" class="default">
 					<thead>
 						<tr>

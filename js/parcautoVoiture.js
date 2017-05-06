@@ -9,7 +9,7 @@ ajaxPost("http://localhost:8080/api/getVehiculeByParcAutoId.php", data, function
         tableau.appendChild(trElt);
         
         var aElt = document.createElement("a");
-        aElt.href = "parcautoDetailVoiture.php?id=" + vehicule.immatricule;
+        aElt.href = "parcautoDetailVoiture.php?id=" + vehicule.immatricule + "&parcAutoId=" + document.getElementById("id_parcauto").value;
         trElt.appendChild(aElt);
         
         var immatriculeElt = document.createElement("td");

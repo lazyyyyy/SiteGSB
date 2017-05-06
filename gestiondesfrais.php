@@ -80,7 +80,7 @@
 							<label>Pièce jointe </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-                                <input type="file" class="form-control" name="fichier"/>
+                                <input type="file" class="form-control" name="fichier" required/>
 						</div>
 					</div>
                     

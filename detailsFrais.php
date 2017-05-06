@@ -24,7 +24,14 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-                <input type="button" name="supprimer" class="boutons" id="supprimer" value="Supprimer" />
+                <?php
+                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                    {
+                        ?>
+                            <input type="button" name="supprimer" class="boutons" id="supprimer" value="Supprimer" />
+                        <?php
+                    }
+                ?>
                 
                 <div class="row">
                     <div class="col-lg-2 col-xs-2 text-right">

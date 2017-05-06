@@ -32,7 +32,7 @@
                     ?>
                         <div>
                             <button class="boutons" name="supprimer" id="supprimer" >Supprimer</button>
-                            <button class="boutons" name="modifier" id="modifier" >Modifier</button>
+                            <a href="modifierMedicament.php?id=<?php echo $_GET["id"] ?>"><button class="boutons" name="modifier" id="modifier" >Modifier</button></a>
                         </div>
                     <?php
                 }

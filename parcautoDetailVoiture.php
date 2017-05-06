@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Porsche Panamera </title>
+	<title>Details Vehicule </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -15,39 +15,66 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="right-sidebar">
+    <input type="hidden" name="immatricule" id="immatricule" value="<?php echo $_GET["id"] ?>" />
+    <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
+    <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["parcAutoId"] ?>" />
 	<div id="page-wrapper">
 
 		<!-- Main -->
 		<div class="wrapper style1">
 
-			<div class="container">
+			<div class="container" id="contenu">
 
-				<div class="row">
-					<div class="col-lg-6 col-lg-offset-3">
-						<div class="text-center"><img src="" width="600" height="400" alt="image voiture" /></div>
-	
-						<table border="1" class="default">
-							<tbody>
-								<tr>
-									<td class="text-left"><a href="#"><div>Ville disponible <div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-								</tr>
-								<tr>
-									<td class="text-left"><a href="#"><div>Ajouter en favori<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-								</tr>
-								<tr>
-									<td class="text-left"><a href="#"><div>Caractéristiques complètes<div style="display:inline-block; float:right;"><i class="fa fa-chevron-right"></i></div></div></a></td>
-								</tr>
-								<tr>
-									<td class="text-left"><button><div>Réserver<div style="display:inline-block; float:right;"></div></div></button></td>
-								</tr>
-
-							</tbody>
-						</table>
-
-					</div>
+				<div class="row" id="immatriculeElt">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Immatricule </label>
+                    </div>
+                    <div id="immatricul"></div>
+				</div>
+                <div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Marque </label>
+                    </div>
+                    <div id="marque"></div>
+				</div>
+                <div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">>Modèle </label>
+                    </div>
+                    <div id="modele"></div>
+				</div>
+                <div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Description </label>
+                    </div>
+                    <div id="description"></div>
+				</div>
+                <div class="row" >
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Kilometrage </label>
+                    </div>
+                    <div id="kilometrage"></div>
+				</div>
+                <div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Equipement </label>
+                    </div>
+                    <div id="equipement"></div>
+				</div>
+                <div class="row">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Energie </label>
+                    </div>
+                    <div id="energie"></div>
+				</div>
+                <div class="row" id="immatriculeElt">
+					<div class="col-lg-2 col-xs-2 text-right">
+                        <label style="font-weight:bold;">Type de vehicule</label>
+                    </div>
+                    <div id="typeVehicule"></div>
 				</div>
 
-				
+				<button class="boutons" id="reserver">Réserver</button>
 			</div>
 
 		</div>
@@ -64,6 +91,8 @@
 		</div>
 
 		<!-- Scripts -->
+        <script src="js/ajax.js"></script>
+        <script src="js/parcautoDetailVoiture.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

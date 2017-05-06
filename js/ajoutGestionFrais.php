@@ -28,7 +28,7 @@
 				{
 					if(json_decode(addPj($destination, $_FILES["fichier"]['name'], $idFrais)))
 					{
-						header('Location: ../gestiondesfrais.php?erreur=0');
+						header('Location: ../mesFichesFrais.php?id='.$_POST["id_utilisateur"]);
 						exit();
 					}
 				}
