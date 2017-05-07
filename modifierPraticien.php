@@ -25,8 +25,8 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-                <form method="post" action="js/modificationPraticien.php" id="formulaire" >
-                    <input type="hidden" name="id_praticien" value="<?php echo $_GET["id"] ?>" />
+                <form  id="formulaire" >
+                    <input type="hidden" name="id_praticien" id="id_praticien" value="<?php echo $_GET["id"] ?>" />
                     <div class="row" >
                         <div class="col-lg-2 col-xs-2 text-right">
                             <label style="font-weight:bold;">Nom </label>

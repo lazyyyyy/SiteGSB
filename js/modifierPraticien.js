@@ -170,6 +170,7 @@ ajaxPost("http://localhost:8080/api/getPraticienById.php", data, function(repons
 });
 
 document.getElementById("formulaire").addEventListener("submit", function(e){
+    e.preventDefault();
     var probleme = false;
     var erreurs = document.getElementsByClassName("erreur");
     for(var i = 0; i < erreurs.length; i++)
@@ -185,34 +186,38 @@ document.getElementById("formulaire").addEventListener("submit", function(e){
             alert("Le formulaire n'a pas été complété correctement");
         }
     else{
-        if(document.getElementById("libelleLieu").value == "0")
+        if(document.getElementById("libelleLieu").value == 0)
             {
+                console.log("Bon endroit");
                 var data = new FormData();
                 data.append("libelle", document.getElementById("newLieu").textContent);
+                console.log(document.getElementById("newLieu").textContent);
                 data.append("adresse", document.getElementById("adresselieu").value);
                 data.append("cp", document.getElementById("cpLieu").value);
                 data.append("ville", document.getElementById("villeLieu").value);
                 data.append("pays", document.getElementById("paysLieu").value);
                 data.append("region_id", document.getElementById("region").value);
                 ajaxPost("http://localhost:8080/api/addLieu.php", data, function(reponse){
+                    console.log(reponse);
                     var rep = JSON.parse(reponse);
-                });
-                
-                var data2 = new FormData();
+                    var data2 = new FormData();
                 data2.append("nom_lieu", document.getElementById("newLieu").textContent);
                 ajaxPost("http://localhost:8080/api/getLieuByName.php", data2, function(reponse2){
                     var lieux = JSON.parse(reponse2);
+                    var idLieu = null;
                     lieux.forEach(function(lieu){
-                        var idLieu = lieu.id;
+                        idLieu = lieu.id;
                         
                     });
                     var data3 = new FormData();
+                    data3.append("id", document.getElementById("id_praticien").value);
+                    console.log(document.getElementById("id_praticien").value);
                     data3.append("nom", document.getElementById("nom").value);
                     data3.append("prenom", document.getElementById("prenom").value);
                     data3.append("telFixe", document.getElementById("telFixe").value);
                     data3.append("telPortable", document.getElementById("telPortable").value);
                     data3.append("mail", document.getElementById("mail").value);
-                    data3.append("dateDerniereVisite", document.getElementById("dateDerniereVisite").value);
+                    data3.append("dateDerniereVisiste", document.getElementById("dateDerniereVisite").value);
                     data3.append("typePraticien", document.getElementById("typePraticien").value);
                     data3.append("specialite", document.getElementById("specialite").value);
                     data3.append("idLieu", idLieu);
@@ -220,9 +225,10 @@ document.getElementById("formulaire").addEventListener("submit", function(e){
                     data3.append("cpLieu", document.getElementById("cpLieu").value);
                     data3.append("villeLieu", document.getElementById("villeLieu").value);
                     data3.append("paysLieu", document.getElementById("paysLieu").value);
-                    data3.append("regionLieu", document.getElementById("region").value);
+                    data3.append("region", document.getElementById("region").value);
 
                     ajaxPost("http://localhost:8080/api/modifierPraticien.php", data3, function(reponse2){
+                        console.log(reponse2);
                         var rep2 = JSON.parse(reponse2);
                         if(rep2)
                             {
@@ -234,17 +240,20 @@ document.getElementById("formulaire").addEventListener("submit", function(e){
                         }
                     });
                 });
+                });
             }
             else
                 {
+                    console.log("Pas au bon endroit");
                     var idLieu = document.getElementById("libelleLieu").value;
                     var data3 = new FormData();
+                    data3.append("id", document.getElementById("id_praticien").value);
                     data3.append("nom", document.getElementById("nom").value);
                     data3.append("prenom", document.getElementById("prenom").value);
                     data3.append("telFixe", document.getElementById("telFixe").value);
                     data3.append("telPortable", document.getElementById("telPortable").value);
                     data3.append("mail", document.getElementById("mail").value);
-                    data3.append("dateDerniereVisite", document.getElementById("dateDerniereVisite").value);
+                    data3.append("dateDerniereVisiste", document.getElementById("dateDerniereVisite").value);
                     data3.append("typePraticien", document.getElementById("typePraticien").value);
                     data3.append("specialite", document.getElementById("specialite").value);
                     data3.append("idLieu", idLieu);
@@ -252,7 +261,7 @@ document.getElementById("formulaire").addEventListener("submit", function(e){
                     data3.append("cpLieu", document.getElementById("cpLieu").value);
                     data3.append("villeLieu", document.getElementById("villeLieu").value);
                     data3.append("paysLieu", document.getElementById("paysLieu").value);
-                    data3.append("regionLieu", document.getElementById("region").value);
+                    data3.append("region", document.getElementById("region").value);
 
                     ajaxPost("http://localhost:8080/api/modifierPraticien.php", data3, function(reponse2){
                         console.log(reponse2);

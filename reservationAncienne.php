@@ -67,7 +67,7 @@
 				</div>
                 <div class="row">
 					<div class="col-lg-2 col-xs-2 text-right">
-                        <label style="font-weight:bold;">>Modèle </label>
+                        <label style="font-weight:bold;">Modèle </label>
                     </div>
                     <div id="modele"></div>
 				</div>

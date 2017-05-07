@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Nouveau produit</title>
+	<title>Nouveau Véhicule</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -21,84 +21,90 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-                
-                <form id="formulaire" >
-                    <div class="row" >
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Nom </label>
-                        </div>
-                            <div class="col-lg-10 col-xs-10">
-                                <input type="text" class="form-control" name="nom" id="nom" required />
-                            </div>
-
-                    </div>
+              
+				<form id="formulaire" method="post" action="js/ajoutVehicule.php" enctype="multipart/form-data" >
+                    <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["id"] ?>" />
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Immatricule </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="text" name="immatricule" id="immatricule" required />	
+						</div>
+                        <div class="erreur" id="erreurImmatricule"></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Marque </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="marque" name="marque" required></select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Model </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="model" name="model" required></select>
+						</div>
+					</div>
                     <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Effets </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <textarea name="effets" id="effets" required ></textarea>
-                        </div>
-
-                    </div>
-                     <div class="row" >
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Contre indications </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10" >
-                            <textarea name="contreIndications" id="contreIndications" required ></textarea>
-                        </div>
-                    </div>
-                     <div class="row" >
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Dosage </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10" >
-                            <textarea name="dosage" id="dosage" required ></textarea>
-                        </div>
-                    </div>
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Description </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control" name="description" id="description" rows="3"></textarea>
+						</div>
+					</div>
                     <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Type d'individu concerné </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <textarea name="typeIndividu" id="typeIndividu" required ></textarea>
-                        </div>
-
-                    </div>
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Kilométrage </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="number" name="km" id="km" />
+						</div>
+					</div>
                     <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Laboratoire </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <select name="labo" id="labo" required></select>
-                        </div>
-
-                    </div>
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Equipement </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control" name="equipement" id="equipement" rows="3"></textarea>
+						</div>
+					</div>
                     <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Famille du produit </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <select name="famille" id="famille" required></select>
-                        </div>
-
-                    </div>
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Energie </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="energie" name="energie" required></select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Type vehicule </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="type_vehicule" name="type_vehicule" required></select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Image (format .png, .jpg ou .jpeg) </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+                                <input type="file" class="form-control" name="fichier" id="fichier" required />
+						</div>
+                        <div class="erreur" id="erreurFichier"></div>
+					</div>
                     
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Composants </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10" id="composants" class="checkb">
-                            
-                        </div>
-
-                    </div>
-                    
-                    <input type="submit" value="Valider" />
-                </form>
-
-				<!--<div id="serialElt"></div>-->
+					<div class="row">
+						<div class="col-xs-12 col-lg-12 text-right">
+							<input type="submit" value="Enregistrer" class="btn btn-success" />
+						</div>
+					</div>
+				</form>
 			
 			</div>
 
@@ -248,8 +254,8 @@
 		</div>
 
 		<!-- Scripts -->
-        <script src="js/ajax.js" ></script>
-        <script src="js/ajouterMedicament.js" ></script>
+        <script src="js/ajax.js"></script>
+        <script src="js/ajouterVehicule.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -259,5 +265,6 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>

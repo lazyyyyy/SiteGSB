@@ -18,12 +18,23 @@
 	<div id="page-wrapper">
         
         <input type="hidden" name="id_parcauto" id="id_parcauto" value="<?php echo $_GET["id"] ?>" />
+        <input type="hidden" name="idRegion" id="idRegion" value="<?php echo $_GET["region"] ?>" />
         
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-
+                
+                <?php
+                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                    {
+                        ?>
+                            <a href="ajouterVehicule.php?id=<?php echo $_GET["id"] ?>"><button class="boutons">Ajouter Vehicule</button></a>
+                            <button class="boutons" id="supprimer" >Supprimer ce parc automobile</button>
+                        <?php
+                    }
+                ?>
+                
 				<table border="1" class="default">
 					<thead>
 						<tr>

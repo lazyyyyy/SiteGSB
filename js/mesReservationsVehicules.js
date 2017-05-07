@@ -27,11 +27,11 @@ ajaxPost("http://localhost:8080/api/getVehiculesReservesByUtilisateurId.php", da
         aElt.appendChild(immatriculeElt);
         
         var modeleElt = document.createElement("td");
-        modeleElt.textContent = reservation.vehicule.modele;
+        modeleElt.textContent = reservation.vehicule.modele.libelle;
         trElt.appendChild(modeleElt);
         
         var marqueElt = document.createElement("td");
-        marqueElt.textContent = reservation.vehicule.marque;
+        marqueElt.textContent = reservation.vehicule.marque.libelle;
         trElt.appendChild(marqueElt);
     });
 });

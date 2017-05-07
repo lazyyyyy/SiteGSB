@@ -24,8 +24,8 @@ ajaxPost("http://localhost:8080/api/getReservationById.php", data2, function(rep
             }
 
         document.getElementById("immatricul").textContent = vehicule.immatricule;
-        document.getElementById("marque").textContent = vehicule.marque;
-        document.getElementById("modele").textContent = vehicule.modele;
+        document.getElementById("marque").textContent = vehicule.marque.libelle;
+        document.getElementById("modele").textContent = vehicule.modele.libelle;
         document.getElementById("description").textContent = vehicule.description;
         document.getElementById("kilometrage").textContent = vehicule.kilometrage;
         document.getElementById("equipement").textContent = vehicule.equipement;
@@ -34,4 +34,6 @@ ajaxPost("http://localhost:8080/api/getReservationById.php", data2, function(rep
 
     });
 });
+
+
 

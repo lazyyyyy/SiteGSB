@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Nouveau produit</title>
+	<title>Nouveau parc automobile</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -25,74 +25,47 @@
                 <form id="formulaire" >
                     <div class="row" >
                         <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Nom </label>
+                            <label style="font-weight:bold;">Libelle </label>
                         </div>
                             <div class="col-lg-10 col-xs-10">
                                 <input type="text" class="form-control" name="nom" id="nom" required />
                             </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row" >
+                        
                         <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Effets </label>
+                            <label style="font-weight:bold;">Lieu </label>
+                        </div>
+
+
+                        <div class="col-lg-10 col-xs-10">
+                            <label for="libelleLieu">Libellé: </label>
+                            <select id="libelleLieu" name="libelleLieu" required>
+                            </select>
+                            <button id="nouveauLieu">Nouveau</button>
+                            <label for="adresselieu">Adresse: </label>
+                            <input type="text" name="adresselieu" id="adresselieu" required />
+
+                            <label for="cpLieu">CP: </label>
+                            <input type="text" name="cpLieu" id="cpLieu" format="NNNN" required />
+                            <label id="erreurCp" class="erreur"></label>
+
+                            <label for="villeLieu">Ville: </label>
+                            <input type="text" name="villeLieu" id="villeLieu" required />
+                            <label for="paysLieu">Pays: </label>
+                            <input type="text" name="paysLieu" id="paysLieu" required />
+                        </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Region </label>
                         </div>
                         <div class="col-lg-10 col-xs-10">
-                            <textarea name="effets" id="effets" required ></textarea>
+                            <select name="region" id="region" required>
+                            </select>
                         </div>
-
-                    </div>
-                     <div class="row" >
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Contre indications </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10" >
-                            <textarea name="contreIndications" id="contreIndications" required ></textarea>
-                        </div>
-                    </div>
-                     <div class="row" >
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Dosage </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10" >
-                            <textarea name="dosage" id="dosage" required ></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Type d'individu concerné </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <textarea name="typeIndividu" id="typeIndividu" required ></textarea>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Laboratoire </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <select name="labo" id="labo" required></select>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Famille du produit </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10">
-                            <select name="famille" id="famille" required></select>
-                        </div>
-
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-2 text-right">
-                            <label style="font-weight:bold;">Composants </label>
-                        </div>
-                        <div class="col-lg-10 col-xs-10" id="composants" class="checkb">
-                            
-                        </div>
-
                     </div>
                     
                     <input type="submit" value="Valider" />
@@ -249,7 +222,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js" ></script>
-        <script src="js/ajouterMedicament.js" ></script>
+        <script src="js/nouveauParcAuto.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

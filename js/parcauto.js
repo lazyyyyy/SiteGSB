@@ -11,7 +11,7 @@ ajaxPost("http://localhost:8080/api/getParcAutoByIdRegion.php", data, function(r
         tableau.appendChild(trElt);
         
         var aElt = document.createElement("a");
-        aElt.href = "parcautoVoiture.php?id=" + parcAuto.id;
+        aElt.href = "parcautoVoiture.php?id=" + parcAuto.id+"&region=" + idRegion;
         trElt.appendChild(aElt);
         
         var libelleElt = document.createElement("td");

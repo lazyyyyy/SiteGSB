@@ -1,7 +1,28 @@
+var check = new Array();
+var listeProduits = new Array();
+var idProduit = document.getElementById("idProduit").value;
+
 var data = new FormData();
-data.append("id_produit", document.getElementById("idProduit").value);
+data.append("nom_produit", "");
+ajaxPost("http://localhost:8080/api/getProduitByName.php", data, function(reponse){
+    var produits = JSON.parse(reponse);
+    produits.forEach(function(produit){
+        listeProduits.push(produit.libelle);
+    });
+    
+    var data = new FormData();
+data.append("id_produit", idProduit);
 ajaxPost("http://localhost:8080/api/getProduitById.php", data, function(reponse){
     produit = JSON.parse(reponse);
+    
+    for(var i = 0; i < listeProduits.length; i++)
+        {
+            if(listeProduits[i].toUpperCase() == produit.libelle.toUpperCase())
+                {
+                    listeProduits.splice(i, 1);
+                }
+        }
+    
     var data2 = new FormData();
     data2.append("labo_libelle", "");
     ajaxPost("http://localhost:8080/api/getLaboratoireByName.php", data2, function(reponse2){
@@ -54,9 +75,28 @@ ajaxPost("http://localhost:8080/api/getProduitById.php", data, function(reponse)
                             if(produit.composant[i].id === composant.id)
                                 {
                                     inputElt.checked = true;
+                                    check.push(composant.id);
                                 }
                         }
                 }
+            inputElt.addEventListener("change", function(e){
+                if(e.target.checked)
+                    {
+                        check.push(e.target.name);
+                    }
+                else{
+                    if(check.length > 0)
+                        {
+                            for(var i = 0; i < check.length; i++)
+                            {
+                                if(check[i] === e.target.name)
+                                    {
+                                        check.splice(i, 1);
+                                    }
+                            }
+                        }
+                }
+            });
             divElt.appendChild(inputElt);
 
             var labelElt = document.createElement("label");
@@ -72,4 +112,44 @@ ajaxPost("http://localhost:8080/api/getProduitById.php", data, function(reponse)
     document.getElementById("dosage").value = produit.dosage;
     document.getElementById("typeIndividu").value = produit.type_individu;
 
+});
+
+document.getElementById("formulaire").addEventListener("submit", function(e){
+    e.preventDefault();
+    var probleme = false;
+    for(var i = 0; i < listeProduits.length; i++)
+        {
+            if(listeProduits[i].toUpperCase() === document.getElementById("nom").value.toUpperCase())
+                {
+                    probleme = true;
+                }
+        }
+    if(probleme)
+        {
+            alert("Ce nom existe déjà, veuillez en choisir un autre");
+        }
+    else{
+                var data = new FormData();
+                data.append("id_produit", idProduit);
+                data.append("libelle", document.getElementById("nom").value);
+                data.append("effets", document.getElementById("effets").value);
+                data.append("contre_indications", document.getElementById("contreIndications").value);
+                data.append("dosage", document.getElementById("dosage").value);
+                data.append("type_individu", document.getElementById("typeIndividu").value);
+                data.append("id_laboratoire", document.getElementById("labo").value);
+                data.append("id_famille", document.getElementById("famille").value);
+                data.append("composants", JSON.stringify(check));
+                ajaxPost("http://localhost:8080/api/modiferProduit.php", data, function(reponse){
+                    console.log(reponse);
+                    var rep = JSON.parse(reponse);
+                    if(rep)
+                        {
+                            document.location.href = "medicamentsDetail.php?id=" + idProduit;
+                        }
+                    else{
+                        alert("Opération échouée");
+                    }
+                });
+            }
+});
 });

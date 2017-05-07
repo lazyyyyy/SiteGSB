@@ -19,8 +19,8 @@ ajaxPost("http://localhost:8080/api/getVehicule.php", data, function(reponse){
         }
     
     document.getElementById("immatricul").textContent = immatricule;
-    document.getElementById("marque").textContent = vehicule.marque;
-    document.getElementById("modele").textContent = vehicule.modele;
+    document.getElementById("marque").textContent = vehicule.marque.libelle;
+    document.getElementById("modele").textContent = vehicule.modele.libelle;
     document.getElementById("description").textContent = vehicule.description;
     document.getElementById("kilometrage").textContent = vehicule.kilometrage;
     document.getElementById("equipement").textContent = vehicule.equipement;
@@ -50,5 +50,38 @@ document.getElementById("reserver").addEventListener("click", function(){
         else{
             alert("Une erreur est survenue, merci de réessayer plus tard");
         }
+    });
+});
+
+document.getElementById("supprimer").addEventListener("click", function(e){
+    e.preventDefault();
+    var data = new FormData();
+    data.append("immatricule", document.getElementById("immatricule").value);
+    ajaxPost("http://localhost:8080/api/getReservationsByImmatriculeVehicule.php", data, function(reponse){
+        var reservations = JSON.parse(reponse);
+        if(reservations !== null)
+            {
+                alert("Impossible de supprimer ce véhicule, car des réservations ont déjà été éffectuées sur ce véhicule");
+            }
+        else{
+            var repUser = confirm("Etes-vous sûr de vouloir supprimer ce véhicule?");
+            if(repUser)
+                {
+                    var data = new FormData();
+                    data.append("immatricule_vehicule", document.getElementById("immatricule").value);
+                    ajaxPost("http://localhost:8080/api/removeVehiculeByImmatricule.php", data, function(reponse2){
+                        console.log(reponse2);
+                        var rep = JSON.parse(reponse2);
+                        if(rep)
+                            {
+                                document.location.href = "parcautoVoiture.php?id=" + document.getElementById("immatricule").value;
+                            }
+                        else{
+                            alert("Opération échouée");
+                        }
+                    });
+                }
+        }
+        
     });
 });
