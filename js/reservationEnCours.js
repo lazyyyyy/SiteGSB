@@ -22,7 +22,7 @@ ajaxPost("http://localhost:8080/api/getReservationById.php", data2, function(rep
                 image.width = "192";
                 divElt.appendChild(image);
             }
-
+        
         document.getElementById("immatricul").textContent = vehicule.immatricule;
         document.getElementById("marque").textContent = vehicule.marque.libelle;
         document.getElementById("modele").textContent = vehicule.modele.libelle;

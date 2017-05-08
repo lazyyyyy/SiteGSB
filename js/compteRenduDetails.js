@@ -2,6 +2,18 @@ var data = new FormData();
 data.append("compte_rendu_id", document.getElementById("idCompteRendu").value);
 ajaxPost("http://localhost:8080/api/getCompteRenduById.php", data, function(reponse){
     var compteRendu = JSON.parse(reponse);
+    
+    console.log(compteRendu.date_modification);
+    
+    if(compteRendu.date_modification !== null)
+        {
+            document.getElementById("modifElt").style.display = "block";
+            document.getElementById("dateModif").textContent = compteRendu.date_modification;
+        }
+    else{
+        document.getElementById("modifElt").style.display = "none";
+    }
+    
     document.getElementById("numero").textContent = compteRendu.id;
     document.getElementById("dateCreation").textContent = compteRendu.date_creation;
     document.getElementById("utilisateur").textContent = compteRendu.utilisateur.nom.toUpperCase() + " " + compteRendu.utilisateur.prenom[0].toUpperCase() + compteRendu.utilisateur.prenom.toLowerCase().slice(1);

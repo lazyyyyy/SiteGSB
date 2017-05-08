@@ -29,6 +29,7 @@
                     {
                         ?>
                             <input type="button" name="supprimer" class="boutons" id="supprimer" value="Supprimer" />
+                            <a href="modifierCompteRendu.php?id=<?php echo $_GET["id"] ?>"><button class="boutons">Modifier</button></a>
                         <?php
                     }
                 ?>
@@ -47,6 +48,14 @@
                     </div>
                     <div class="col-lg-10 col-xs-10">
                         <label id="dateCreation"></label>
+                    </div>
+                </div>
+                <div class="row" id="modifElt">
+                    <div class="col-lg-2 col-xs-2 text-right">
+                        <label>Date de modification </label>
+                    </div>
+                    <div class="col-lg-10 col-xs-10">
+                        <label id="dateModif"></label>
                     </div>
                 </div>
                 <div class="row">

@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Details Fiche Frais</title>
+	<title>Modification parc automobile</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -15,98 +15,64 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="right-sidebar">
-    
-    <input type="hidden" name="idFrais" id="idFrais" value="<?php echo $_GET["id"] ?>" />
-    
 	<div id="page-wrapper">
-
+        <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["id"] ?>" />
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-                <?php
-                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
-                    {
-                        ?>
-                            <input type="button" name="supprimer" class="boutons" id="supprimer" value="Supprimer" />
-                            <a href="modifierFrais.php?id=<?php echo $_GET["id"] ?>" ><button class="boutons">Modifier</button></a>
-                        <?php
-                    }
-                ?>
                 
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>N° de Fiche </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="numero"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date de création </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="dateCreation"></label>
-                    </div>
-                </div>
-                <div class="row" id="modifElt">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date de modification </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="dateModif"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Utilisateur</label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="utilisateur"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Type de Frais </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="typeFrais"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date du frais</label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="date"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Montant </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="montant"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Commentaire </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="commentaire"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Pièce jointe </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10" id="pj">
-                            
-                    </div>
-                </div>
+                <form id="formulaire" >
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Libelle </label>
+                        </div>
+                            <div class="col-lg-10 col-xs-10">
+                                <input type="text" class="form-control" name="nom" id="nom" required />
+                            </div>
 
+                    </div>
+                    <div class="row" >
+                        
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Lieu </label>
+                        </div>
+
+
+                        <div class="col-lg-10 col-xs-10">
+                            <label for="libelleLieu">Libellé: </label>
+                            <select id="libelleLieu" name="libelleLieu" required>
+                            </select>
+                            <button id="nouveauLieu">Nouveau</button>
+                            <label for="adresselieu">Adresse: </label>
+                            <input type="text" name="adresselieu" id="adresselieu" required />
+
+                            <label for="cpLieu">CP: </label>
+                            <input type="text" name="cpLieu" id="cpLieu" format="NNNN" required />
+                            <label id="erreurCp" class="erreur"></label>
+
+                            <label for="villeLieu">Ville: </label>
+                            <input type="text" name="villeLieu" id="villeLieu" required />
+                            <label for="paysLieu">Pays: </label>
+                            <input type="text" name="paysLieu" id="paysLieu" required />
+                        </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Region </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <select name="region" id="region" required>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <input type="submit" value="Valider" />
+                </form>
+
+				<!--<div id="serialElt"></div>-->
+			
 			</div>
 
 		</div>
@@ -255,8 +221,8 @@
 		</div>
 
 		<!-- Scripts -->
-        <script src="js/ajax.js"></script>
-        <script src="js/detailsFrais.js"></script>
+        <script src="js/ajax.js" ></script>
+        <script src="js/modifierParcAuto.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -266,6 +232,5 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 </body>
 </html>

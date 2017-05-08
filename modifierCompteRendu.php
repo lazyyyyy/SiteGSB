@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Details Fiche Frais</title>
+	<title>Modification compte rendu de visite </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -13,100 +13,121 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/map.css" />
 </head>
 <body class="right-sidebar">
-    
-    <input type="hidden" name="idFrais" id="idFrais" value="<?php echo $_GET["id"] ?>" />
-    
 	<div id="page-wrapper">
-
+        <input type="hidden" name="idCompteRendu" id="idCompteRendu" value="<?php echo $_GET["id"] ?>" />
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-                <?php
-                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
-                    {
-                        ?>
-                            <input type="button" name="supprimer" class="boutons" id="supprimer" value="Supprimer" />
-                            <a href="modifierFrais.php?id=<?php echo $_GET["id"] ?>" ><button class="boutons">Modifier</button></a>
-                        <?php
-                    }
-                ?>
-                
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>N° de Fiche </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="numero"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date de création </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="dateCreation"></label>
-                    </div>
-                </div>
-                <div class="row" id="modifElt">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date de modification </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="dateModif"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Utilisateur</label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="utilisateur"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Type de Frais </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="typeFrais"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date du frais</label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="date"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Montant </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="montant"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Commentaire </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="commentaire"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Pièce jointe </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10" id="pj">
-                            
-                    </div>
-                </div>
 
+				<form id="formulaire">
+                    <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Praticien</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select name="praticien" class="form-control" style="display:inline;" id="selectPraticien" required>
+                                <optgroup>
+                                    
+                                </optgroup>
+		 					</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Date</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="date" class="form-control" name="date" id="date" required/>
+                            <label id="erreurDate"></label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Motif</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select name="motif" id="motif" required>
+                                
+                            </select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Coefficients</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<label id="labelConfiance">Confiance</label>
+                            <select for="labelConfiance" name="confiance" id="confiance" required>
+                                <?php
+                                    for($i = 1; $i <= 10; $i++)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $i ?>" ><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+                            <label id="labelPrescription" >Prescription</label>
+                            <select for="labelPrescription" name="prescription" id="prescription" required>
+                                <?php
+                                    for($i = 1; $i <= 10; $i++)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $i ?>" ><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+                            <label id="labelNotoriete" >Notoriete</label>
+                            <select for="labelNotoriete" name="notoriete" id="notoriete" required>
+                                <?php
+                                    for($i = 1; $i <= 10; $i++)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $i ?>" ><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Bilan</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control"name="bilan" id="bilan" rows="3" required></textarea>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Produit présenté</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="produits" required></select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Nombre d'échantillons donnés</label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="number" name="echantillons" id="echantillons" required/>
+						</div>
+					</div>
+                    
+					<div class="row">
+						<div class="col-xs-12 col-lg-12 text-right">
+							<button type="submit" name="lien1" class="btn btn-primary"> <i class="fa fa-plus"></i> Modifier</button>
+						</div>
+					</div>
+				</form>
+			
 			</div>
 
 		</div>
@@ -209,7 +230,7 @@
 										<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
 									</div>
 									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+							+			<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
 									</div>
 									<div class="6u$">
 										<a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>
@@ -256,7 +277,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js"></script>
-        <script src="js/detailsFrais.js"></script>
+        <script src="js/modifierCompteRendu.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

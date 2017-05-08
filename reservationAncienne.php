@@ -57,7 +57,7 @@
 					<div class="col-lg-2 col-xs-2 text-right">
                         <label style="font-weight:bold;">Immatricule </label>
                     </div>
-                    <div id="immatricul"></div>
+                    <div id="immatricul"><a></a></div>
 				</div>
                 <div class="row">
 					<div class="col-lg-2 col-xs-2 text-right">

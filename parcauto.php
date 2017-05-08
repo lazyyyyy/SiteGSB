@@ -25,14 +25,6 @@
 		<div class="wrapper style1">
 
 			<div class="container">
-                <?php
-                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
-                    {
-                        ?>
-                            <a href="nouveauParcAuto.php?id=<?php echo $_GET["id"] ?>"><button class="boutons">Ajouter</button></a>
-                        <?php
-                    }
-                ?>
 				<table border="1" class="default">
 					<thead>
 						<tr>

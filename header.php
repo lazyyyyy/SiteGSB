@@ -81,6 +81,16 @@
                         <ul>
 							<li><a href="parcautoaccueil.php">Nouvelle réservation</a></li>
 							<li><a href="mesReservationsVehicules.php?id=<?php echo json_decode($_SESSION["user_id_json"]) ?>">Mes réservations</a></li>
+                            <?php
+                            if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
+                            {
+                                ?>
+                                    <li>
+                                        <a href="nouveauParcAuto.php">Nouveau Parc automobile</a>
+                                    </li>
+                                <?php
+                            }
+                           ?>
 						</ul>
                     </li>
 					<li>

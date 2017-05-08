@@ -30,6 +30,7 @@
                 {
                     ?>
                         <button class="boutons" id="supprimer">Supprimer</button>
+                        <a href="modifierVehicule.php?id=<?php echo $_GET["id"] ?>&parcAutoId=<?php echo $_GET["parcAutoId"] ?>"><button class="boutons">Modifier</button></a>
                     <?php
                 }
                ?>

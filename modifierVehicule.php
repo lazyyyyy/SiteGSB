@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Details Fiche Frais</title>
+	<title>Modification Véhicule</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -15,98 +15,99 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="right-sidebar">
-    
-    <input type="hidden" name="idFrais" id="idFrais" value="<?php echo $_GET["id"] ?>" />
-    
 	<div id="page-wrapper">
-
+        
+        
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-                <?php
-                    if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
-                    {
-                        ?>
-                            <input type="button" name="supprimer" class="boutons" id="supprimer" value="Supprimer" />
-                            <a href="modifierFrais.php?id=<?php echo $_GET["id"] ?>" ><button class="boutons">Modifier</button></a>
-                        <?php
-                    }
-                ?>
-                
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>N° de Fiche </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="numero"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date de création </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="dateCreation"></label>
-                    </div>
-                </div>
-                <div class="row" id="modifElt">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date de modification </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="dateModif"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Utilisateur</label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="utilisateur"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Type de Frais </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="typeFrais"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Date du frais</label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="date"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Montant </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="montant"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Commentaire </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10">
-                        <label id="commentaire"></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-xs-2 text-right">
-                        <label>Pièce jointe </label>
-                    </div>
-                    <div class="col-lg-10 col-xs-10" id="pj">
-                            
-                    </div>
-                </div>
-
+              
+				<form id="formulaire" method="post" action="js/modifVehicule.php" enctype="multipart/form-data" >
+                    <input type="hidden" name="immat" id="immat" value="<?php echo $_GET["id"] ?>" />
+                    <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["parcAutoId"] ?>" />
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Immatricule </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="text" name="immatricule" id="immatricule" required />	
+						</div>
+                        <div class="erreur" id="erreurImmatricule"></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Marque </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="marque" name="marque" required></select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Model </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="model" name="model" required></select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Description </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control" name="description" id="description" rows="3"></textarea>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Kilométrage </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<input type="number" name="km" id="km" />
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Equipement </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<textarea class="form-control" name="equipement" id="equipement" rows="3"></textarea>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Energie </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="energie" name="energie" required></select>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Type vehicule </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+							<select id="type_vehicule" name="type_vehicule" required></select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Image (format .png, .jpg ou .jpeg) </label>
+						</div>
+						<div class="col-lg-10 col-xs-10">
+                                <input type="file" class="form-control" name="fichier" id="fichier" />
+						</div>
+                        <div class="erreur" id="erreurFichier"></div>
+					</div>
+                    
+					<div class="row">
+						<div class="col-xs-12 col-lg-12 text-right">
+							<input type="submit" value="Enregistrer" class="btn btn-success" />
+						</div>
+					</div>
+				</form>
+			
 			</div>
 
 		</div>
@@ -256,7 +257,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js"></script>
-        <script src="js/detailsFrais.js"></script>
+        <script src="js/modifierVehicule.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
