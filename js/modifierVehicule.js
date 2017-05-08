@@ -30,59 +30,69 @@ ajaxPost("http://localhost:8080/api/getVehicule.php", data, function(reponse){
         }
     });
     });
-});
-
-var listeMarques = new Array();
-var listeModels = new Array();
-var data = new FormData();
-data.append("nom", "");
-ajaxPost("http://localhost:8080/api/getMarquesVehiculesByName.php", data, function(reponse){
-    var marques = JSON.parse(reponse);
-    marques.forEach(function(marque){
-        listeMarques.push(marque);
-        var optionElt = document.createElement("option");
-        optionElt.value = marque.id;
-        optionElt.textContent = marque.libelle;
-        document.getElementById("marque").appendChild(optionElt);
-        
-    });
+    
+    var listeMarques = new Array();
+    var listeModels = new Array();
     var data = new FormData();
-        data.append("id_marque", document.getElementById("marque").value);
-        ajaxPost("http://localhost:8080/api/getModelsVehiculesByMarqueId.php", data, function(reponse){
-            var models = JSON.parse(reponse);
-            models.forEach(function(model){
-                listeModels.push(model);
-                var optionElt = document.createElement("option");
-                optionElt.value = model.id;
-                optionElt.textContent = model.libelle;
-                document.getElementById("model").appendChild(optionElt);
-            });
-        });
-    
-    
-    /*for(var i = 0; i < listeMarques.length; i++)
-        {
-            if(listeMarques[i].id === document.getElementById("marque").value)
+    data.append("nom", "");
+    ajaxPost("http://localhost:8080/api/getMarquesVehiculesByName.php", data, function(reponse){
+        var marques = JSON.parse(reponse);
+        marques.forEach(function(marque){
+            listeMarques.push(marque);
+            var optionElt = document.createElement("option");
+            optionElt.value = marque.id;
+            optionElt.textContent = marque.libelle;
+            if(marque.id === ceVehicule.marque.id)
                 {
-                    for(var j = 0; j < listeModels.length; j++)
-                        {
-                            if(listeModels[j].marque.id === document.getElementById("marque").value)
+                    optionElt.selected = true;
+                    
+                    var data = new FormData();
+                    data.append("id_marque", marque.id);
+                    ajaxPost("http://localhost:8080/api/getModelsVehiculesByMarqueId.php", data, function(reponse){
+                        var models = JSON.parse(reponse);
+                        models.forEach(function(model){
+                            listeModels.push(model);
+                            var optionElt2 = document.createElement("option");
+                            optionElt2.value = model.id;
+                            optionElt2.textContent = model.libelle;
+                            if(model.id === ceVehicule.modele.id)
                                 {
-                                    console/log("OK");
-                                    var optionElt = document.createElement("option");
-                                    optionElt.value = listeModels[j].id;
-                                    optionElt.textContent = listeModels[j].libelle;
-                                    document.getElementById("model").appendChild(optionElt);
+                                    optionElt2.selected = true;
                                 }
-                            else{
-                                console.log("model correspond pas");
-                            }
-                        }
+                            
+                            document.getElementById("model").appendChild(optionElt2);
+                        });
+                    });
                 }
-            else{
-                console.log("marque correspond pas");
-            }
-        }*/
+            document.getElementById("marque").appendChild(optionElt);
+
+        });
+
+
+        /*for(var i = 0; i < listeMarques.length; i++)
+            {
+                if(listeMarques[i].id === document.getElementById("marque").value)
+                    {
+                        for(var j = 0; j < listeModels.length; j++)
+                            {
+                                if(listeModels[j].marque.id === document.getElementById("marque").value)
+                                    {
+                                        console/log("OK");
+                                        var optionElt = document.createElement("option");
+                                        optionElt.value = listeModels[j].id;
+                                        optionElt.textContent = listeModels[j].libelle;
+                                        document.getElementById("model").appendChild(optionElt);
+                                    }
+                                else{
+                                    console.log("model correspond pas");
+                                }
+                            }
+                    }
+                else{
+                    console.log("marque correspond pas");
+                }
+            }*/
+    });
 });
 
 document.getElementById("marque").addEventListener("change", function(e){
@@ -101,7 +111,7 @@ document.getElementById("marque").addEventListener("change", function(e){
         });
 });
 
-window.addEventListener("load", function(){
+/*window.addEventListener("load", function(){
     document.getElementById("model").innerHTML = "";
     var data = new FormData();
         data.append("id_marque", document.getElementById("marque").value);
@@ -118,8 +128,8 @@ window.addEventListener("load", function(){
                     document.getElementById("model").appendChild(optionElt);
                 });
             });
-        });*/
-});
+        });
+});*/
 
 var data = new FormData();
 data.append("libelle_energie", "");
@@ -163,8 +173,8 @@ ajaxPost("http://localhost:8080/api/getVehicule.php", data, function(reponse){
     var vehicule = JSON.parse(reponse);
     
     document.getElementById("immatricule").value = vehicule.immatricule;
-    document.getElementById("marque").value = vehicule.marque.id;
-    document.getElementById("model").value = vehicule.modele.id;
+    //document.getElementById("marque").value = vehicule.marque.id;
+    //document.getElementById("model").value = vehicule.modele.id;
     document.getElementById("description").value = vehicule.description;
     document.getElementById("km").value = vehicule.kilometrage;
     document.getElementById("equipement").value = vehicule.equipement;
