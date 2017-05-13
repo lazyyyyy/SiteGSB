@@ -26,6 +26,8 @@
 				<form id="formulaire" method="post" action="js/modifVehicule.php" enctype="multipart/form-data" >
                     <input type="hidden" name="immat" id="immat" value="<?php echo $_GET["id"] ?>" />
                     <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["parcAutoId"] ?>" />
+                    <input type="hidden" name="listeAnciennesImages" id="listeAnciennesImages" value="" />
+                    <input type="hidden" name="region" id="region" value="<?php echo $_GET["region"] ?>" />
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Immatricule </label>
@@ -96,9 +98,17 @@
 							<label>Image (format .png, .jpg ou .jpeg) </label>
 						</div>
 						<div class="col-lg-10 col-xs-10">
-                                <input type="file" class="form-control" name="fichier" id="fichier" />
+                                <input type="file" class="form-control" name="fichier[]" id="fichier" multiple />
 						</div>
                         <div class="erreur" id="erreurFichier"></div>
+					</div>
+                    <div class="row">
+						<div class="col-lg-2 col-xs-2 text-right">
+							<label>Cliquez sur une image pour la supprimer </label>
+						</div>
+						<div class="col-lg-10 col-xs-10" id="anciennesImages">
+							
+						</div>
 					</div>
                     
 					<div class="row">

@@ -116,13 +116,19 @@ ajaxPost("http://localhost:8080/api/getTypeVehiculeByName.php", data, function(r
 });
 
 document.getElementById("fichier").addEventListener("change", function(e){
-    console.log(e.target.value.split('.').reverse()[0].toUpperCase());
-    if(e.target.value.split('.').reverse()[0].toUpperCase() !== "PNG" && e.target.value.split('.').reverse()[0].toUpperCase() !== "JPG" && e.target.value.split('.').reverse()[0].toUpperCase() !== "JPEG")
+    var fichiers = e.target.files;
+    for(var i = 0; i < fichiers.length; i++)
         {
-            alert("Veuillez choisir une image au format .png, .jpg ou .jpeg");
-            document.getElementById("fichier").value = null;
+            var name = fichiers[i].name;
+            if(name.split('.').reverse()[0].toUpperCase() !== "PNG" && name.split('.').reverse()[0].toUpperCase() !== "JPG" && name.split('.').reverse()[0].toUpperCase() !== "JPEG")
+                {
+                    alert("Veuillez choisir uniquement des images au format .png, .jpg ou .jpeg");
+                    document.getElementById("fichier").value = null;
+                }
+            else{
+                document.getElementById("erreurFichier").textContent = "";
+            }
         }
-    else{
-        document.getElementById("erreurFichier").textContent = "";
-    }
+    /*console.log(e.target.value.split('.').reverse()[0].toUpperCase());
+    */
 });

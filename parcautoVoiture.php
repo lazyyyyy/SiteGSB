@@ -29,7 +29,7 @@
                     if(strtoupper($user->fonction_utilisateur->libelle) == "ADMINISTRATEUR")
                     {
                         ?>
-                            <a href="ajouterVehicule.php?id=<?php echo $_GET["id"] ?>"><button class="boutons">Ajouter Vehicule</button></a>
+                            <a href="ajouterVehicule.php?id=<?php echo $_GET["id"] ?>&region=<?php echo $_GET["region"] ?>"><button class="boutons">Ajouter Vehicule</button></a>
                             <button class="boutons" id="supprimer" >Supprimer ce parc automobile</button>
                             <a href="modifierParcAuto.php?id=<?php echo $_GET["id"] ?>"><button class="boutons">Modifier ce parc automobile</button></a>
                         <?php

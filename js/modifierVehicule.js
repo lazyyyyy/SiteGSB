@@ -23,7 +23,7 @@ ajaxPost("http://localhost:8080/api/getVehicule.php", data, function(reponse){
         else if(listeImmatriculations.indexOf(e.target.value) !== -1)
             {
                 alert("Cette immatriculation existe déjà");
-                document.getElementById("immatricule").value = "";
+                document.getElementById("immatricule").value = immatricule;
             }
         else{
             document.getElementById("erreurImmatricule").textContent = "";
@@ -156,15 +156,21 @@ ajaxPost("http://localhost:8080/api/getTypeVehiculeByName.php", data, function(r
 });
 
 document.getElementById("fichier").addEventListener("change", function(e){
-    console.log(e.target.value.split('.').reverse()[0].toUpperCase());
-    if(e.target.value.split('.').reverse()[0].toUpperCase() !== "PNG" && e.target.value.split('.').reverse()[0].toUpperCase() !== "JPG" && e.target.value.split('.').reverse()[0].toUpperCase() !== "JPEG")
+    var fichiers = e.target.files;
+    for(var i = 0; i < fichiers.length; i++)
         {
-            alert("Veuillez choisir une image au format .png, .jpg ou .jpeg");
-            document.getElementById("fichier").value = null;
+            var name = fichiers[i].name;
+            if(name.split('.').reverse()[0].toUpperCase() !== "PNG" && name.split('.').reverse()[0].toUpperCase() !== "JPG" && name.split('.').reverse()[0].toUpperCase() !== "JPEG")
+                {
+                    alert("Veuillez choisir uniquement des images au format .png, .jpg ou .jpeg");
+                    document.getElementById("fichier").value = null;
+                }
+            else{
+                document.getElementById("erreurFichier").textContent = "";
+            }
         }
-    else{
-        document.getElementById("erreurFichier").textContent = "";
-    }
+    /*console.log(e.target.value.split('.').reverse()[0].toUpperCase());
+    */
 });
 
 var data = new FormData();
@@ -182,4 +188,49 @@ ajaxPost("http://localhost:8080/api/getVehicule.php", data, function(reponse){
     document.getElementById("type_vehicule").value = vehicule.type_vehicule.id;
 });
 
+var data = new FormData();
+data.append("immatricule", immatricule);
+ajaxPost("http://localhost:8080/api/getImagesVehicule.php", data, function(reponse){
+    var liste = new Array();
+    var images = JSON.parse(reponse);
+    images.forEach(function(image){
+        liste.push(image);
+        var img = document.createElement("img");
+        img.height = "100";
+        img.width = "100";
+        img.id = image.id;
+        img.src = image.image;
+        
+        img.addEventListener("click", function(e){
+            var repUser = confirm("Supprimer cette image? (Le changement ne sera pris en compte que lorsque vous validerez le formulaire)");
+            if(repUser)
+                {
+                    var imgElt = document.getElementById(e.target.id);
+                    document.getElementById("anciennesImages").removeChild(imgElt);
+                    for(var i = 0; i < liste.length; i++)
+                        {
+                            if(liste[i].id === e.target.id)
+                                {
+                                    liste.splice(i, 1);
+                                }
+                        }
+                    document.getElementById("listeAnciennesImages").value = JSON.stringify(liste);
+                }
+        });
+        document.getElementById("anciennesImages").appendChild(img);
+    });
+    document.getElementById("listeAnciennesImages").value = JSON.stringify(liste);
+});
 
+
+/*for(var i = 0; i < listeImages.length; i++)
+    {
+        console.log(listeImages.length);
+        var img = document.createElement("img");
+        img.height = "50";
+        img.width = "50";
+        img.src = listeImages[i].image;
+        document.getElementById("anciennesImages").appendChild(img);
+    }
+
+*/

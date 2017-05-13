@@ -18,6 +18,7 @@
     <input type="hidden" name="immatricule" id="immatricule" value="<?php echo $_GET["id"] ?>" />
     <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
     <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["parcAutoId"] ?>" />
+    <input type="hidden" name="region" id="region" value="<?php echo $_GET["region"] ?>" />
 	<div id="page-wrapper">
 
 		<!-- Main -->
@@ -30,7 +31,7 @@
                 {
                     ?>
                         <button class="boutons" id="supprimer">Supprimer</button>
-                        <a href="modifierVehicule.php?id=<?php echo $_GET["id"] ?>&parcAutoId=<?php echo $_GET["parcAutoId"] ?>"><button class="boutons">Modifier</button></a>
+                        <a href="modifierVehicule.php?id=<?php echo $_GET["id"] ?>&parcAutoId=<?php echo $_GET["parcAutoId"] ?>&region=<?php echo $_GET["region"] ?>"><button class="boutons">Modifier</button></a>
                     <?php
                 }
                ?>

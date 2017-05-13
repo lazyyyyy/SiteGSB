@@ -11,11 +11,14 @@ ajaxPost("http://localhost:8080/api/getVehicule.php", data, function(reponse){
         {
             var divElt = document.createElement("div");
             contenu.insertBefore(divElt, document.getElementById("immatriculeElt"));
-            var image = document.createElement("img");
-            image.src = vehicule.image;
-            image.height = "108";
-            image.width = "192";
-            divElt.appendChild(image);
+            
+            vehicule.image.forEach(function(img){
+                var image = document.createElement("img");
+                image.src = img.image;
+                image.height = "108";
+                image.width = "192";
+                divElt.appendChild(image);
+            });
         }
     
     document.getElementById("immatricul").textContent = immatricule;
@@ -74,7 +77,7 @@ document.getElementById("supprimer").addEventListener("click", function(e){
                         var rep = JSON.parse(reponse2);
                         if(rep)
                             {
-                                document.location.href = "parcautoVoiture.php?id=" + document.getElementById("immatricule").value;
+                                document.location.href = "parcautoVoiture.php?id=" + document.getElementById("parcAutoId").value + "&region=" + document.getElementById("region").value;
                             }
                         else{
                             alert("Opération échouée");

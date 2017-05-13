@@ -24,6 +24,7 @@
               
 				<form id="formulaire" method="post" action="js/ajoutVehicule.php" enctype="multipart/form-data" >
                     <input type="hidden" name="parcAutoId" id="parcAutoId" value="<?php echo $_GET["id"] ?>" />
+                    <input type="hidden" name="region" id="region" value="<?php echo $_GET["region"] ?>" />
 					<div class="row">
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Immatricule </label>
@@ -93,8 +94,8 @@
 						<div class="col-lg-2 col-xs-2 text-right">
 							<label>Image (format .png, .jpg ou .jpeg) </label>
 						</div>
-						<div class="col-lg-10 col-xs-10">
-                                <input type="file" class="form-control" name="fichier" id="fichier" required />
+						<div class="col-lg-10 col-xs-10" id="fichiersElt" >
+                                <input type="file" class="form-control image" name="fichier[]" id="fichier" accept="image/*" multiple required />
 						</div>
                         <div class="erreur" id="erreurFichier"></div>
 					</div>

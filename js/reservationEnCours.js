@@ -16,11 +16,14 @@ ajaxPost("http://localhost:8080/api/getReservationById.php", data2, function(rep
             {
                 var divElt = document.createElement("div");
                 contenu.insertBefore(divElt, document.getElementById("immatriculeElt"));
-                var image = document.createElement("img");
-                image.src = vehicule.image;
-                image.height = "108";
-                image.width = "192";
-                divElt.appendChild(image);
+                
+                vehicule.image.forEach(function(img){
+                    var image = document.createElement("img");
+                    image.src = img.image;
+                    image.height = "108";
+                    image.width = "192";
+                    divElt.appendChild(image);
+                });
             }
         
         document.getElementById("immatricul").textContent = vehicule.immatricule;
