@@ -47,7 +47,7 @@
 				<ul>
 					<li class="active"><a href="home.php">Home</a></li>
 
-					<li><a href="agenda.php">Agenda</a></li>
+					<li><a href="agenda.php?annee=<?php echo date('Y') ?>">Agenda</a></li>
 					<li><a href="gestiondesfrais.php">Gestion des frais</a>
                         <ul>
                                     <a href="gestiondesfrais.php"><li>Nouvelle fiche</li></a>
