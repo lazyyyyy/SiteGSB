@@ -1,16 +1,11 @@
 <?php
     include("header.php");
-    $an = date("Y");
-    $mois = date("m");
-    $jour = date("d");
-    $dateDuJour = $an."-".$mois."-".$jour;
 ?>
 
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Agenda </title>
+	<title>Modification Rendez-vous</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -18,128 +13,98 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/agenda.css" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-        <script type="text/javascript">
-            jQuery(function($){
-               $('.month').hide();
-               $('.month:first').show();
-               $('.months a:first').addClass('active');
-               var current = 1;
-               $('.months a').click(function(){
-                    var month = $(this).attr('id').replace('linkMonth','');
-                    if(month != current){
-                        $('#month'+current).slideUp();
-                        $('#month'+month).slideDown();
-                        $('.months a').removeClass('active'); 
-                        $('.months a#linkMonth'+month).addClass('active'); 
-                        current = month;
-                    }
-                    return false; 
-               });
-            });
-        </script>
 </head>
 <body class="right-sidebar">
-    <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
-    <input type="hidden" name="annee" id="annee" value="<?php echo $_GET["annee"] ?>" />
-    <input type="hidden" name="mois" id="mois" value="<?php echo date("m") ?>" />
-    <input type="hidden" name="dateDuJour" id="dateDuJour" value="<?php echo $dateDuJour ?>" />
-    
 	<div id="page-wrapper">
+        
+        <!-- Pour récupérer la variable PHP transmise en GET, depuis le code JavaScript -->
 
 		<!-- Main -->
 		<div class="wrapper style1">
 
 			<div class="container">
-                
-                <?php
-        require('../api/agenda.php');
-        $date = new Date();
-        $year = $_GET["annee"];
-        $events = $date->getEvents($year, json_decode($_SESSION["user_id_json"]));
-        $dates = $date->getAll($year);
-        ?>
-        <form id="formulaire">
-            Année: <input type="number" name="an" id="an" value="<?php echo $_GET["annee"] ?>" />
-            <input type="submit" value="OK" />
-        </form>
-        <br/><br/>
-        <h2><?php echo $_GET["annee"] ?></h2>
-        <br/>
-        <div class="periods">
-           <!-- <div class="year"><?php /*echo $year; */ ?></div>-->
-            <div class="months">
-                <ul>
-                    <?php foreach ($date->months as $id=>$m): ?>
-                         <li><a href="#" id="linkMonth<?php echo $id+1; ?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3)); ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <div class="clear"></div>
-            <?php $dates = current($dates); ?>
-            <?php foreach ($dates as $m=>$days): ?>
-               <div class="month relative" id="month<?php echo $m; ?>">
-               <table>
-                   <thead>
-                       <tr>
-                           <?php foreach ($date->days as $d): ?>
-                                <th><?php echo substr($d,0,3); ?></th>
-                           <?php endforeach; ?>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       <tr>
-                       <?php $end = end($days); foreach($days as $d=>$w): ?>
-                           <?php $time = strtotime("$year-$m-$d"); ?>
-                           <?php if($d == 1 && $w != 1): ?>
-                                <td colspan="<?php echo $w-1; ?>" class="padding"></td>
-                           <?php endif; ?>
-                            <td <?php
-                                    if($time == strtotime(date('Y-m-d')))
-                                    {
-                                        ?>
-                                            class="today caseJour"
-                                        <?php
-                                    }
-                                    else{
-                                        ?>
-                                            class="caseJour"
-                                        <?php
-                                    }
-                                ?> id="<?php echo $year."-".$m."-".$d ?>" >
-                                <div class="relative">
-                                    <div class="day" ><?php echo $d; ?></div>
-                                </div>
-                               
-                               <ul class="events">
-                                   <?php if(isset($events[$time])): foreach($events[$time] as $e): ?>
-                                        <li class="rdv" ></li>
-                                   <?php endforeach; endif;  ?>
-                               </ul>
-                           </td>
-                           <?php if($w == 7): ?>
-                            </tr><tr>
-                           <?php endif; ?>
-                       <?php endforeach; ?>
-                       <?php if($end != 7): ?>
-                            <td colspan="<?php echo 7-$end; ?>" class="padding"></td>
-                       <?php endif; ?>
-                       </tr>
-                   </tbody>
-               </table>
-               </div>
-            <?php endforeach; ?>
-        </div>
-        <div id="listeRdvElt"><a id="ajouter"><button>Ajouter</button></a>
-            <div id="listeRdv"></div>
-        </div>
-                
-                
-                
-                
-                
-				<!--<iframe src="https://calendar.google.com/calendar/embed?src=florianspadaro%40gmail.com&ctz=Europe/Paris" style="border: 0" width="100%" height="800px" frameborder="0" scrolling="no"></iframe>-->
+                <form  id="formulaire" >
+                    <input type="hidden" name="date" id="date" value="<?php echo $_GET["id"] ?>" />
+                    <input type="hidden" name="idUser" id="idUser" value="<?php echo json_decode($_SESSION["user_id_json"]) ?>" />
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Heure </label>
+                        </div>
+                            <div class="col-lg-10 col-xs-10" >
+                                <input type="number" name="heures" id="heures" value="00" min="00" max="24" required />
+                                <label>:</label>
+                                <input type="number" name="minutes" id="minutes" value="00" min="00" max="59" required />
+                                <input type="hidden" name="secondes" id="secondes" value="00" />
+                            </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Praticien </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <select id="praticien" required></select>
+                        </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Lieu </label>
+                        </div>
+                        
+                        
+                        <div class="col-lg-10 col-xs-10">
+                            <label for="libelleLieu">Libellé: </label>
+                            <select id="libelleLieu" name="libelleLieu" required>
+                            </select>
+                            <button id="nouveauLieu">Nouveau</button>
+                            <label for="adresselieu">Adresse: </label>
+                            <input type="text" name="adresselieu" id="adresselieu" required />
+
+                            <label for="cpLieu">CP: </label>
+                            <input type="text" name="cpLieu" id="cpLieu" format="NNNN" required />
+                            <label id="erreurCp" class="erreur"></label>
+
+                            <label for="villeLieu">Ville: </label>
+                            <input type="text" name="villeLieu" id="villeLieu" required />
+                            <label for="paysLieu">Pays: </label>
+                            <input type="text" name="paysLieu" id="paysLieu" required />
+                        </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Region </label>
+                        </div>
+                        <div class="col-lg-10 col-xs-10">
+                            <select name="region" id="region" required>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Titre </label>
+                        </div>
+                            <div class="col-lg-10 col-xs-10">
+                                <input type="text" class="form-control" name="titre" id="titre" required />
+                            </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-2 col-xs-2 text-right">
+                            <label style="font-weight:bold;">Description </label>
+                        </div>
+                            <div class="col-lg-10 col-xs-10">
+                                <textarea id="description" required></textarea>
+                            </div>
+
+                    </div>
+                    
+                    <input type="submit" value="Valider" />
+                </form>
+
+				
 			
 			</div>
 
@@ -290,7 +255,7 @@
 
 		<!-- Scripts -->
         <script src="js/ajax.js" ></script>
-        <script src="js/agenda.js" ></script>
+        <script src="js/ajouterRdv.js" ></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

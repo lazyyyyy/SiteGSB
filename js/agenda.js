@@ -14,6 +14,15 @@ ajaxPost("http://localhost:8080/api/getRdvUtilisateurByAnnee.php", data, functio
     for(var i = 0; i < cases.length; i++)
         {
             cases[i].addEventListener("click", function(e){
+                
+                for(var j = 0; j < cases.length; j++)
+                    {
+                        cases[j].style.backgroundColor = "white";
+                    }
+                
+                e.target.style.backgroundColor = "grey";
+                e.stopPropagation();
+                document.getElementById("listeRdvElt").style.display = "block";
                 var id = e.target.getAttribute("id");
                 var tab = id.split("-");
                 if(tab[1].length < 2)
@@ -25,6 +34,7 @@ ajaxPost("http://localhost:8080/api/getRdvUtilisateurByAnnee.php", data, functio
                         tab[2] = "0" + tab[2];
                     }
                 var date = tab[0] + "-" + tab[1] + "-" + tab[2];
+                document.getElementById("ajouter").href = "ajouterRdv.php?id=" + date;
                 
                 var listeRdv = new Array();
                 rdvAnnee.forEach(function(rdv){
@@ -34,16 +44,29 @@ ajaxPost("http://localhost:8080/api/getRdvUtilisateurByAnnee.php", data, functio
                         {
                             listeRdv.push(rdv);
                         }
-                    
+                document.getElementById("listeRdv").innerHTML = "";
                 if(listeRdv.length > 0)
                         {
-                            document.getElementById("listeRdv").innerHTML = "";
-                            document.getElementById("listeRdv").style.display = "block";
                             listeRdv.forEach(function(rdv){
                                 var divElt = document.createElement("div");
                                 divElt.style.border = "5px solid black";
                                 divElt.style.marginBottom = "10px";
+                                divElt.style.marginTop = "10px";
                                 document.getElementById("listeRdv").appendChild(divElt);
+                                
+                                var aModifierButton = document.createElement("a");
+                                aModifierButton.href = "modifierRdv.php?id=" + rdv.id;
+                                divElt.appendChild(aModifierButton);
+                                var modifierButton = document.createElement("button");
+                                modifierButton.textContent = "Modifier";
+                                aModifierButton.appendChild(modifierButton);
+                                
+                                var aSupprimerButton = document.createElement("a");
+                                aSupprimerButton.href = "js/supprimerRdv.php?id=" + rdv.id;
+                                divElt.appendChild(aSupprimerButton);
+                                var supprimerButton = document.createElement("button");
+                                supprimerButton.textContent = "Supprimer";
+                                aSupprimerButton.appendChild(supprimerButton);
                                 
                                 var titre = document.createElement("h1");
                                 titre.textContent = rdv.titre;
@@ -94,12 +117,9 @@ ajaxPost("http://localhost:8080/api/getRdvUtilisateurByAnnee.php", data, functio
                                 descriptionElt.appendChild(descriptionValeur);
                             });
                         }
-                    else{
-                        document.getElementById("listeRdv").innerHTML = "";
-                        document.getElementById("listeRdv").style.display = "none";
-                    }
                 });
-
+                
+                
                 /*var data = new FormData();
                 data.append("date", date);
                 data.append("id_utilisateur", document.getElementById("idUser").value);
@@ -131,5 +151,45 @@ ajaxPost("http://localhost:8080/api/getRdvUtilisateurByAnnee.php", data, functio
                     }
                 });*/
             });
+            
+            /*var numeroJourElt = document.getElementsByClassName("relative");
+            for(var k = 0; k < numeroJourElt.length; k++)
+                {
+                    numeroJourElt[k].addEventListener("click", function(e){
+                        e.preventDefault();
+                        e.target.parentElement.click();
+                    });
+                }
+            
+            var numeroJour = document.getElementsByClassName("day");
+            for(var l = 0; l < numeroJour.length; l++)
+                {
+                    numeroJour[l].addEventListener("click", function(e){
+                        e.preventDefault();
+                        e.target.parentElement.parentElement.click();
+                    });
+                }*/
+        }
+    
+    if(document.getElementById("annee").value === "2017")
+        {
+            var mois = document.getElementById("mois").value;
+            if(mois.charAt(0) === '0')
+                {
+                    mois = mois.slice(1);
+                }
+            document.getElementById("linkMonth" + mois).click();
+            
+            var tabJours = document.getElementById("dateDuJour").value.split("-");
+            if(tabJours[1].charAt(0) === "0")
+                {
+                    tabJours[1] = tabJours[1].slice(1);
+                }
+            if(tabJours[2].charAt(0) === "0")
+                {
+                    tabJours[2] = tabJours[2].slice(1);
+                }
+            var dateJour = tabJours[0] + "-" + tabJours[1] + "-" + tabJours[2];
+            document.getElementById(dateJour).click();
         }
 });
